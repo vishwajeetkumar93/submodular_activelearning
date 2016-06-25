@@ -1,0 +1,258 @@
+/*
+ *	Header file for defining feature based functions (essentially sums of concave over modular functions): f(X) = \sum_{f \in F} w_f g(m_f(X)), where g is a concave function, {m_f}_{f \in F} are a set of feature scores, and f \in F are features.
+	Author: Rishabh Iyer.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+#ifndef __FEATUREREP__
+#define __FEATUREREP__
+struct Feature{ // Specific feature f
+     long int index; // index f
+     int num_uniq_wrds; // number of non-zero enteries
+     int* featureIndex; // Indices of m_f which are non-zero (generally sparse)
+     float* featureVec; // score of the features present (i.e values of m_f)
+     int tot_num_wrds;
+};
+#endif
+
+class featureBasedFunctions: public submodularFunctions{
+	int nFeatures; // Number of Features |F|
+	int type; //type: type of concave function, 1: sqrt over modular, 2: inverse function, 3: Log function, 4: Whatever else you want, Default: sqrt over modular
+	public:
+	struct Feature * feats; // structure of individual feature representations (set of features F)
+	double* featureWeights; // Feature Weights (w_f)
+	double* preCompute; // Precomputed statistics. For a set X, p_X(f) = m_f(X). 
+	unordered_set<int> preComputeSet; // This points to the preComputed Set for which the statistics p_X is calculated.
+	int sizepreCompute;// size of the precompute statistics (in this case, |F|).
+	
+	// Functions
+	featureBasedFunctions(unordered_set<int>& groundset, int t, char* strInputMat);
+	~featureBasedFunctions();
+	double concave_function(double K);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset);
+	void clearpreCompute();
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+featureBasedFunctions::featureBasedFunctions(unordered_set<int>& groundset, int t, char* featureFile){
+	nFeatures = 200000;
+	type = t;
+	featureWeights = new double[nFeatures]();
+	n = groundset.size();
+	groundSet = groundset;
+	sizepreCompute = nFeatures;
+	preCompute = new double[sizepreCompute]; 
+	for (int i = 0; i < sizepreCompute; i++) { preCompute[i] = 0; }
+	feats = readFeaturefunction(featureFile, featureWeights, n);
+}
+
+featureBasedFunctions::~featureBasedFunctions(){
+	delete[] feats;
+	delete[] featureWeights;
+	delete[] preCompute;
+}
+
+double featureBasedFunctions::concave_function(double K){
+	switch(type)
+	   {
+	   case 1 :
+	      return sqrt(K);
+	   case 2 :
+	      return (1-1/(K+1));
+	   case 3 :
+	      return log(1 + K);
+	   default :
+	      return sqrt(K);
+	   }
+}
+
+double featureBasedFunctions::eval(const unordered_set<int>& sset){
+// Evaluation of function valuation.
+	double sum = 0;
+	double* featurescoresset = new double[nFeatures];
+	unordered_set<int>::const_iterator it;
+	for (int i = 0; i < nFeatures; i++) { featurescoresset[i] = 0; }
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		for (int j = 0; j < feats[*it].num_uniq_wrds; j++){
+			featurescoresset[feats[*it].featureIndex[j]] += feats[*it].featureVec[j];   
+		}
+	}
+	for (int ii=0; ii<nFeatures; ii++){
+	sum = sum + featureWeights[ii]*concave_function(featurescoresset[ii]);
+	}
+	return sum;
+}
+
+double featureBasedFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+// Evaluation of function valuation.
+	if(safe == 1){
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+		
+	double sum = 0;
+	for (int ii=0; ii<nFeatures; ii++){
+	sum = sum + featureWeights[ii]*concave_function(preCompute[ii]);
+	}
+	return sum;
+}
+
+double featureBasedFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+// Evaluation of gains.
+	if(sset.find(item) != sset.end()){
+		cout<<"Error in using evalGainsadd: the provided item already belongs to the subset\n";
+		return 0;
+	}
+	double gains = 0; 
+	double temp;
+	double diff;
+	double* featurescoresset = new double[nFeatures];
+	unordered_set<int>::const_iterator it;
+	for (int i = 0; i < nFeatures; i++) { featurescoresset[i] = 0; }
+	for( it = sset.begin(); it != sset.end(); it++ ){
+	for (int j = 0; j < feats[*it].num_uniq_wrds; j++){
+		featurescoresset[feats[*it].featureIndex[j]] += feats[*it].featureVec[j];   
+	}
+	}
+	for (int i=0; i<feats[item].num_uniq_wrds; i++){
+	temp = preCompute[feats[item].featureIndex[i]] + feats[item].featureVec[i];
+	diff = concave_function(temp) - concave_function(preCompute[feats[item].featureIndex[i]]);
+	gains += featureWeights[feats[item].featureIndex[i]] * diff;
+	}
+	return gains;
+}
+
+double featureBasedFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+// Evaluation of function valuation.
+	if(sset.find(item) == sset.end()){
+		cout<<"Error in using evalGainsremove: the provided item does not belong to the subset\n";
+		return 0;
+	}
+	double sum = 0;
+	double sumd = 0;
+	double* featurescoresset = new double[nFeatures];
+	double* featurescoressetd = new double[nFeatures];
+	unordered_set<int>::const_iterator it;
+	for (int i = 0; i < nFeatures; i++) { featurescoresset[i] = 0; featurescoressetd[i] = 0;}
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		for (int j = 0; j < feats[*it].num_uniq_wrds; j++){
+			featurescoresset[feats[*it].featureIndex[j]] += feats[*it].featureVec[j];  
+			if(*it != item)  featurescoressetd[feats[*it].featureIndex[j]] += feats[*it].featureVec[j];
+		}
+	}
+	for (int ii=0; ii<nFeatures; ii++){
+		sum = sum + featureWeights[ii]*concave_function(featurescoresset[ii]);
+		sumd = sumd + featureWeights[ii]*concave_function(featurescoressetd[ii]);	
+	}
+	return (sum - sumd);
+}
+
+double featureBasedFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+// Fast evaluation of Adding gains using the precomputed statistics. This is used, for example, in the implementation of the forward greedy algorithm.
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item does not belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) != sset.end()){
+			cout<<"Error in using evalGainsaddFast: the provided item already belongs to the subset\n";
+			return 0;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+	double gains = 0; 
+	double temp;
+	double diff;
+	int num_wrds = feats[item].num_uniq_wrds;
+	gains = 0;;
+	for (int i=0; i<num_wrds; i++){
+		temp = preCompute[feats[item].featureIndex[i]] + feats[item].featureVec[i];
+		diff = concave_function(temp) - concave_function(preCompute[feats[item].featureIndex[i]]);
+		gains += featureWeights[feats[item].featureIndex[i]] * diff;
+	}
+	return gains;
+}
+
+double featureBasedFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+// Fast evaluation of Removing gains using the precomputed statistics. This is used, for example, in the implementation of the reverse greedy algorithm.
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) == sset.end()){
+			cout<<"Error in using evalGainsremoveFast: the provided item does not belong to the subset\n";
+			return 0;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+	double gains = 0; 
+	double temp;
+	double diff;
+	int num_wrds = feats[item].num_uniq_wrds;
+	gains = 0;;
+	for (int i=0; i<num_wrds; i++){
+		temp = preCompute[feats[item].featureIndex[i]] - feats[item].featureVec[i];
+		diff = concave_function(preCompute[feats[item].featureIndex[i]]) - concave_function(temp);
+		gains += featureWeights[feats[item].featureIndex[i]] * diff;
+	}
+	return gains;
+}
+
+void featureBasedFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+// Update statistics for algorithms sequentially adding elements (for example, the greedy algorithm).
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item does not belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) != sset.end()){
+			cout<<"Error in using updateStatisticsAdd: the provided item belongs to the sset already\n";
+			return;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+	for (int i = 0; i < feats[item].num_uniq_wrds; i++){
+                preCompute[feats[item].featureIndex[i]] += feats[item].featureVec[i];
+        }
+	preComputeSet.insert(item);
+}
+
+void featureBasedFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+// Update statistics for algorithms sequentially removing elements (for example, the reverse greedy algorithm).
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) == sset.end()){
+			cout<<"Error in using updateStatisticsRemove: the provided item does not belong to the subset\n";
+			return;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+	for (int i = 0; i < feats[item].num_uniq_wrds; i++){
+                preCompute[feats[item].featureIndex[i]] -= feats[item].featureVec[i];
+        }
+	preComputeSet.erase(item);
+}
+
+void featureBasedFunctions::clearpreCompute(){
+	for (int i = 0; i < sizepreCompute; i++) { preCompute[i] = 0; }
+	preComputeSet.clear();
+	}
+
+void featureBasedFunctions::setpreCompute(const unordered_set<int>& sset){
+	clearpreCompute();
+	unordered_set<int>::const_iterator it;
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		updateStatisticsAdd(sset, *it);
+	}
+}
+
+

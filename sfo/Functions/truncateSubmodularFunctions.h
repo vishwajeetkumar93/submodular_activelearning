@@ -1,0 +1,113 @@
+/*
+ *	Truncate a submodular functions h(X) = f(X \cap A), a submodular functions f, and a set A \subseteq V.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class truncateSubmodularFunctions: public submodularFunctions{
+	protected:
+	submodularFunctions* f;
+	unordered_set<int> preCompute; // preCompute A \cap X, for a given set X.
+	public:
+	// Functions
+	truncateSubmodularFunctions(submodularFunctions* f, unordered_set<int>& A);
+	unordered_set<int> findIntersection(const unordered_set<int>& sset); // Return the intersection of the sset with A (which is the groundset of the truncated function).
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); 
+	void clearpreCompute();
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+truncateSubmodularFunctions::truncateSubmodularFunctions(submodularFunctions* f, unordered_set<int>& A): submodularFunctions(A), f(f) {preCompute = unordered_set<int>();}
+
+unordered_set<int> truncateSubmodularFunctions::findIntersection(const unordered_set<int>& sset){
+	unordered_set<int> isset = unordered_set<int>();
+	for(unordered_set<int>::const_iterator it = groundSet.begin(); it != groundSet.end(); it++ ){
+		if(sset.find(*it) != sset.end())
+			isset.insert(*it);
+	}
+	return isset;
+}
+double truncateSubmodularFunctions::eval(const unordered_set<int>& sset){
+	unordered_set<int> isset = findIntersection(sset);
+	return f->eval(isset);
+}
+
+double truncateSubmodularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	return f->evalFast(preCompute, 0);
+}
+
+double truncateSubmodularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	if (groundSet.find(item) == groundSet.end())
+		return 0;
+	else{
+		unordered_set<int> isset = findIntersection(sset);
+		return f->evalGainsadd(isset, item);
+	}
+}
+
+double truncateSubmodularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	if (groundSet.find(item) == groundSet.end())
+		return 0;
+	else{
+		unordered_set<int> isset = findIntersection(sset);
+		return f->evalGainsremove(isset, item);
+	}
+}
+
+double truncateSubmodularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+// If safe = 0, we do a hack in order to avoid the complexity of computing the complement set, since it is often not needed. Use this function in the unsafe mode if you are not sure what to do. This works only in the case when the underlying function uses preComputed statistics, and does not just implement evalGainsadd(). If not sure, just set the parameter 'safe' to it's default value.
+	if (groundSet.find(item) == groundSet.end())
+		return 0;
+	else{	
+		return f->evalGainsaddFast(preCompute, item, safe);  
+	}
+}
+
+double truncateSubmodularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+// If safe = 0, we do a hack in order to avoid the complexity of computing the complement set, since it is often not needed. Use this function in the unsafe mode if you are not sure what to do. This works only in the case when the underlying function uses preComputed statistics, and does not just implement evalGainsadd(). If not sure, just set the parameter 'safe' to it's default value.
+	if (groundSet.find(item) == groundSet.end())
+		return 0;
+	else{
+		return f->evalGainsremoveFast(preCompute, item, safe);
+	}
+}
+
+void truncateSubmodularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	// If safe = 0, we do a hack in order to avoid the complexity of computing the complement set, since it is often not needed. Use this function in the unsafe mode if you are not sure what to do. This works only in the case when the underlying function uses preComputed statistics, and does not just implement evalGainsadd(). If not sure, just set the parameter 'safe' to it's default value.
+	if (groundSet.find(item) == groundSet.end())
+		return;
+	else{
+		f->updateStatisticsAdd(preCompute, item);
+		preCompute.insert(item);
+	}
+}
+
+void truncateSubmodularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	// If safe = 0, we do a hack in order to avoid the complexity of computing the complement set, since it is often not needed. Use this function in the unsafe mode if you are not sure what to do. This works only in the case when the underlying function uses preComputed statistics, and does not just implement evalGainsadd(). If not sure, just set the parameter 'safe' to it's default value.
+	if (groundSet.find(item) == groundSet.end())
+		return;
+	else{
+		f->updateStatisticsRemove(preCompute, item);
+		preCompute.erase(item);
+	}
+}
+
+void truncateSubmodularFunctions::clearpreCompute(){
+	f->clearpreCompute();
+	preCompute.clear();
+}
+
+void truncateSubmodularFunctions::setpreCompute(const unordered_set<int>& sset){
+	f->setpreCompute(sset);
+	preCompute = findIntersection(sset);
+}
+

@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnrepo/!svn/ver/12747/Rishabh-svn/sfoc++/Functions
+END
+complementSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnrepo/!svn/ver/12612/Rishabh-svn/sfoc++/Functions/complementSubmodularFunctions.h
+END
+modularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnrepo/!svn/ver/12612/Rishabh-svn/sfoc++/Functions/modularFunctions.h
+END
+facilityLocation.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnrepo/!svn/ver/12740/Rishabh-svn/sfoc++/Functions/facilityLocation.h
+END
+combineSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnrepo/!svn/ver/12624/Rishabh-svn/sfoc++/Functions/combineSubmodularFunctions.h
+END
+confusabilityFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnrepo/!svn/ver/12543/Rishabh-svn/sfoc++/Functions/confusabilityFunctions.h
+END
+graphCutFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnrepo/!svn/ver/12543/Rishabh-svn/sfoc++/Functions/graphCutFunctions.h
+END
+submodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnrepo/!svn/ver/12543/Rishabh-svn/sfoc++/Functions/submodularFunctions.h
+END
+orSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnrepo/!svn/ver/12655/Rishabh-svn/sfoc++/Functions/orSubmodularFunctions.h
+END
+saturatedCoverage.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnrepo/!svn/ver/12736/Rishabh-svn/sfoc++/Functions/saturatedCoverage.h
+END
+truncateSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnrepo/!svn/ver/12612/Rishabh-svn/sfoc++/Functions/truncateSubmodularFunctions.h
+END
+scaleSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnrepo/!svn/ver/12629/Rishabh-svn/sfoc++/Functions/scaleSubmodularFunctions.h
+END
+saturateSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnrepo/!svn/ver/12655/Rishabh-svn/sfoc++/Functions/saturateSubmodularFunctions.h
+END
+differenceSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnrepo/!svn/ver/12543/Rishabh-svn/sfoc++/Functions/differenceSubmodularFunctions.h
+END
+clusteredSubmodularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnrepo/!svn/ver/12624/Rishabh-svn/sfoc++/Functions/clusteredSubmodularFunctions.h
+END
+featureBasedFunctionsOld.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnrepo/!svn/ver/12612/Rishabh-svn/sfoc++/Functions/featureBasedFunctionsOld.h
+END
+featureBasedFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svnrepo/!svn/ver/12747/Rishabh-svn/sfoc++/Functions/featureBasedFunctions.h
+END
+setFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnrepo/!svn/ver/12543/Rishabh-svn/sfoc++/Functions/setFunctions.h
+END
+complexityFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnrepo/!svn/ver/12762/Rishabh-svn/sfoc++/Functions/complexityFunctions.h
+END
+combineSubmodularModularFunctions.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnrepo/!svn/ver/12612/Rishabh-svn/sfoc++/Functions/combineSubmodularModularFunctions.h
+END

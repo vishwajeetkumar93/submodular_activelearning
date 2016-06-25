@@ -1,0 +1,99 @@
+/*
+ *	Combining two submodular functions h(X) = \sum_{i = 1}^k \lambda_i f_i(X), for two submodular functions f and g.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class combineSubmodularFunctions: public submodularFunctions{
+	protected:
+	vector<submodularFunctions*> fvec;
+	vector<double> lambda;
+	public:
+	// Functions
+	combineSubmodularFunctions(unordered_set<int>& groundSet, vector<submodularFunctions*>& fvec,vector<double> lambda);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); // Set preCompute for removing elements.
+	void clearpreCompute();
+};
+
+combineSubmodularFunctions::combineSubmodularFunctions(unordered_set<int>& groundSet, vector<submodularFunctions*>& fvec, vector<double> lambda): submodularFunctions(groundSet), fvec(fvec), lambda(lambda){}
+
+double combineSubmodularFunctions::eval(const unordered_set<int>& sset){
+	double sumtot = 0;
+	for (int i = 0; i < fvec.size(); i++){
+		sumtot += fvec[i]->eval(sset);
+	}
+	return sumtot;
+}
+
+double combineSubmodularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	double sumtot = 0;
+	for (int i = 0; i < fvec.size(); i++){
+		sumtot += fvec[i]->evalFast(sset, safe);
+	}
+	return sumtot;
+}
+
+double combineSubmodularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	double gainsadd = 0;
+	for (int i = 0; i < fvec.size(); i++){
+		gainsadd += fvec[i]->evalGainsadd(sset, item);
+	}
+	return gainsadd;
+}
+
+double combineSubmodularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	double gainsremove = 0;
+	for (int i = 0; i < fvec.size(); i++){
+		gainsremove += fvec[i]->evalGainsadd(sset, item);
+	}
+	return gainsremove;
+}
+
+double combineSubmodularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	double gainsadd = 0;
+	for (int i = 0; i < fvec.size(); i++){
+		gainsadd += fvec[i]->evalGainsaddFast(sset, item, safe);
+	}
+	return gainsadd;
+}
+
+double combineSubmodularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	double gainsadd = 0;
+	for (int i = 0; i < fvec.size(); i++){
+		gainsadd += fvec[i]->evalGainsremoveFast(sset, item, safe);
+	}
+	return gainsadd;
+}
+
+void combineSubmodularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	for (int i = 0; i < fvec.size(); i++){
+		fvec[i]->updateStatisticsAdd(sset, item, safe);
+	}
+}
+
+void combineSubmodularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	for (int i = 0; i < fvec.size(); i++){
+		fvec[i]->updateStatisticsRemove(sset, item, safe);
+	}
+}
+
+void combineSubmodularFunctions::clearpreCompute(){
+	for (int i = 0; i < fvec.size(); i++){
+		fvec[i]->clearpreCompute();
+	}
+}
+
+void combineSubmodularFunctions::setpreCompute(const unordered_set<int>& sset){
+	for (int i = 0; i < fvec.size(); i++){
+		fvec[i]->setpreCompute(sset);
+	}
+}
+

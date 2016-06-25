@@ -1,0 +1,382 @@
+/*
+ *
+	Author: Pankaj Singh
+	Email: pr.pankajsingh@gmail.com
+	IIT Bombay, Mumbai
+ *
+ *
+ * NOTE: here pattern id 1 is mapped to pattern id 0 (as index starts from 0)
+ */
+ #include "../Utils/pattern.h"
+ 
+class patternOverlap: public submodularFunctions{
+	protected:
+	vector<Pattern> patternCollection;
+	vector<vector<bool>> bitCorpus_empty;
+	vector<vector<bool>> bitCorpus_preCompute;
+	vector<int> preCompute; // Precomputed statistics of length equal to total number of words in file. For a given set X, preCompute[i] is int value stating the number of times that word is being covered by this set. This preComputed statistics is used in several algorithms for speed ups.
+	int sizepreCompute;// size of the precompute statistics (in this case, length of total words WORDCOUNT).
+	unordered_set<int> preComputeSet; // This points to the preComputed Set for which the statistics p_X is calculated.
+	public:
+	// Functions
+//	patternOverlap(std::unordered_set<int>& groundSet,int wordCount, char* graphFilet);
+	patternOverlap(std::unordered_set<int>& groundSet,vector<Pattern> pcollection,vector<vector<bool>> bitCorpus);
+	//void readfromFile(char* graphFile);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& ssett);
+	void clearpreCompute();
+	void testDisplay();
+	void displayPrecompute();
+	virtual ~patternOverlap(){}
+};
+/*
+patternOverlap::patternOverlap(std::unordered_set<int>& groundSet,int w, char* graphFile): submodularFunctions(groundSet){
+	readfromFile(graphFile);
+	sizepreCompute = w;
+	preCompute.assign(sizepreCompute, 0); //precomputed statistics for speeding up greedy
+}
+* */
+
+
+patternOverlap::	patternOverlap(std::unordered_set<int>& groundSet,vector<Pattern> pcollection,vector<vector<bool>> bitCorpus) : submodularFunctions(groundSet), patternCollection(pcollection),bitCorpus_preCompute(bitCorpus),bitCorpus_empty(bitCorpus){
+	//Note that intially argumnet bitCorpus will be false only as per the sfogoodpattern.cc code
+	//sizepreCompute = w;
+	//preCompute.assign(sizepreCompute, 0); //precomputed statistics for speeding up greedy
+	;
+}
+
+/*
+void patternOverlap::readfromFile(char* graphFile){
+	patternsData.resize(n);
+	pattern2Length.resize(n);
+	string tmp;
+	ifstream iFile;
+	int count = 0; // row count
+	FILE* fp;
+	double tmpd; float tmpf;
+	//printf("Loading pattern data file from %s... for the pattern Overlap Function...\n",graphFile);
+	if (!(fp=fopen(graphFile,"rb"))){
+		printf("ERROR: cannot open file %s\n",graphFile);
+	}
+	int nRow = n;
+	int freq=0;
+	int pLen=0;
+	int  tmpi=0;
+	for (int i = 0; i < nRow; i++){
+	fscanf(fp,"%d",&freq);
+	patternsData[i].resize(freq);
+	fscanf(fp,"%d",&pLen);
+	pattern2Length[i]=pLen;
+		for(int j=0;j<freq;j++){
+			fscanf(fp,"%d",&tmpi);
+			patternsData[i][j]=tmpi;
+		}
+	}
+	fclose(fp);
+}
+
+*/
+
+
+void patternOverlap::testDisplay(){
+;
+}
+
+double patternOverlap::eval(const unordered_set<int>& sset){
+	int count = 0;
+	int pCount_=0;
+	int tCount_;
+	vector<vector<bool>> tmpBitCorpus=bitCorpus_empty;
+	vector<vector<bool>> isOverlappedFlag=bitCorpus_empty;
+	unordered_set<int>::const_iterator it;
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		pCount_++;
+		tCount_=0;
+		//cout<<"pattern "<<*it <<" "<<pCount_<<endl; 
+		std::vector<Triplet> v = patternCollection[*it].occurances;
+		for(std::vector<Triplet>::iterator triplet_it = v.begin(); triplet_it != v.end(); ++triplet_it) {
+			tCount_++;
+			int sid=(*triplet_it).sid;
+			int beginPos=(*triplet_it).beginPos;
+			int endPos=(*triplet_it).endPos;
+			for(int i=beginPos;i<=endPos;i++){
+				if(!tmpBitCorpus[sid][i])
+				{
+					tmpBitCorpus[sid][i] = true ;
+				}
+				else{
+					isOverlappedFlag[sid][i] = true ;
+				}
+			}
+		}
+
+	}
+	//count bits where flag is false and tmBitCorpus is true
+	vector<vector< bool > >::iterator vvi_iterator;
+	vector< bool>::iterator vi_iterator;
+
+	vector<vector< bool > >::iterator vvi_flag_iterator;
+	vector< bool>::iterator vi_flag_iterator;
+
+
+	for(vvi_terator = tmpBitCorpus.begin(),vvi_flag_iterator=isOverlappedFlag.begin();vvi_iterator!=tmpBitCorpus.end();++vvi_iterator,++vvi_flag_iterator) {
+		for(vi_iterator = (*vvi_iterator).begin(),vi_flag_iterator = (*vvi_flag_iterator).begin();vi_iterator!=(*vvi_iterator).end();++vi_iterator,++vi_flag_iterator) {
+			if((*vi_iterator)&&(!(*vi_flag_iterator)))count++;
+		}  
+	}
+	return (double (count));
+}
+/***************************************************************NOT IMPLEMENTED FROM HERE************************************************************************************************************/
+double patternOverlap::evalFast(const unordered_set<int>& sset, bool safe=0){
+	if(safe == 1){
+		if(sset != preComputeSet)
+		setpreCompute(sset);
+		}
+	int count=0;
+	for(int i=0;i<bitCorpus_preCompute.size();i++){
+		for(int j=0;j<bitCorpus_preCompute[i].size();j++){
+			if(bitCorpus_preCompute[i][j])count++;
+		}
+	}
+	return (double (count));
+}
+
+void patternOverlap::displayPrecompute(){
+	for(int i=0;i<bitCorpus_preCompute.size();i++){
+		for(int j=0;j<bitCorpus_preCompute[i].size();j++){
+			if(bitCorpus_preCompute[i][j])cout<< "1 ";
+			else cout << "0 ";
+		}
+		cout <<"\n";
+	}
+}
+
+double patternOverlap::evalGainsadd(const unordered_set<int>& sset, int item){
+	int gains = 0;
+
+	vector<vector<bool>> tmpBitCorpus=bitCorpus_empty;
+	unordered_set<int>::const_iterator it;
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		std::vector<Triplet> v = patternCollection[*it].occurances;
+		for(std::vector<Triplet>::iterator triplet_it = v.begin(); triplet_it != v.end(); ++triplet_it) {
+			int sid=(*triplet_it).sid;
+			int beginPos=(*triplet_it).beginPos;
+			int endPos=(*triplet_it).endPos;
+			for(int i=beginPos;i<=endPos;i++){
+				if(!tmpBitCorpus[sid][i])
+				{
+					tmpBitCorpus[sid][i] = true ;
+				}
+			}
+		}
+
+	}
+	
+	//addition of item
+	std::vector<Triplet> v_item = patternCollection[item].occurances;
+		for(std::vector<Triplet>::iterator triplet_it = v_item.begin(); triplet_it != v_item.end(); ++triplet_it) {
+			int sid=(*triplet_it).sid;
+			int beginPos=(*triplet_it).beginPos;
+			int endPos=(*triplet_it).endPos;
+			for(int i=beginPos;i<=endPos;i++){
+				if(!tmpBitCorpus[sid][i])
+				{
+					tmpBitCorpus[sid][i] = 1 ;
+					gains++;
+				}
+			}
+		}
+
+	return (double (gains));
+}
+double patternOverlap::evalGainsremove(const unordered_set<int>& sset, int item){
+/*
+		if(sset.find(item) == sset.end()){
+		cout<<"Error in using evalGainsremove: the provided item does not belong to the subset\n";
+		return 0;
+	}
+	// remove item from local copy of sset
+	unordered_set<int> sset_local(sset);
+	sset_local.erase(item);
+
+
+	double gains = 0;
+	int count1 = 0;
+	int count2 = 0;
+	int pLen=0;
+	int i=0;
+	int tmp;
+	vector<bool> wordList(sizepreCompute,false);
+	unordered_set<int>::const_iterator it;
+	for( it = sset_local.begin(); it != sset_local.end(); it++ ){
+		pLen=pattern2Length[*it];
+		for(std::vector<int>::iterator itt = patternsData[*it].begin(); itt != patternsData[*it].end(); ++itt) {
+			//tmp=patternsData[*it][*itt];
+			tmp=(*itt);
+			for(i=0;i<pLen;++i){
+				wordList[tmp+i]=true;
+			}
+		}
+
+	}
+	for(i=0;i<sizepreCompute;++i)
+	{
+		if(wordList[i]){++count1;}
+	}
+
+	pLen=pattern2Length[item];
+	for(std::vector<int>::iterator itt = patternsData[item].begin(); itt != patternsData[item].end(); ++itt) {
+			//tmp=patternsData[item][*itt];
+			tmp=(*itt);
+			for(i=0;i<pLen;++i){
+				wordList[tmp+i]=true;
+			}
+		}
+	for(i=0;i<sizepreCompute;++i)
+	{
+		if(wordList[i]){++count2;}
+	}
+	gains=count1-count2;
+	return (double (gains));
+	* 	* **/
+   cout<< "Inside patternOverlap::evalGainsremove\n";
+   return 0;
+}
+
+
+double patternOverlap::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe=0){
+// Fast evaluation of Adding gains using the precomputed statistics. This is used, for example, in the implementation of the forward greedy algorithm.
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item does not belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) != sset.end()){
+			cout<<"Error in using evalGainsaddFast: the provided item already belongs to the subset\n";
+			return 0;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+	int count=0;
+	std::vector<Triplet> v_item = patternCollection[item].occurances;
+		for(std::vector<Triplet>::iterator triplet_it = v_item.begin(); triplet_it != v_item.end(); ++triplet_it) {
+			int sid=(*triplet_it).sid;
+			int beginPos=(*triplet_it).beginPos;
+			int endPos=(*triplet_it).endPos;
+			for(int i=beginPos;i<=endPos;i++){
+				if(!bitCorpus_preCompute[sid][i])
+				{
+					count++;
+				}
+			}
+		}
+
+
+	return (double(count));
+
+}
+double patternOverlap::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe=0){
+/*
+// Fast evaluation of Removing gains using the precomputed statistics. This is used, for example, in the implementation of the reverse greedy algorithm.
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) == sset.end()){
+			cout<<"Error in using evalGainsremoveFast: the provided item does not belong to the subset\n";
+			return 0;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+
+	int count=0;
+	int tmp,i;
+	int pLen=pattern2Length[item];
+	for(std::vector<int>::iterator itt = patternsData[item].begin(); itt != patternsData[item].end(); ++itt) {
+			//tmp=patternsData[item][*itt];
+			tmp=(*itt);
+			for(i=0;i<pLen;++i){
+				//count only those which are not covered by existing set.
+				if(preCompute[tmp+i]==1)--count;
+			}
+		}
+	return (double(count));
+*/
+cout <<"Inside patternOverlap::evalGainsremoveFast \n";
+return 0;
+}
+
+void patternOverlap::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe=0){
+// Update statistics for algorithms sequentially adding elements (for example, the greedy algorithm).
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item does not belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) != sset.end()){
+			cout<<"Error in using updateStatisticsAdd: the provided item belongs to the sset already\n";
+			return;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+
+	std::vector<Triplet> v_item = patternCollection[item].occurances;
+		for(std::vector<Triplet>::iterator triplet_it = v_item.begin(); triplet_it != v_item.end(); ++triplet_it) {
+			int sid=(*triplet_it).sid;
+			int beginPos=(*triplet_it).beginPos;
+			int endPos=(*triplet_it).endPos;
+			for(int i=beginPos;i<=endPos;i++){
+				if(!bitCorpus_preCompute[sid][i])
+				{
+					bitCorpus_preCompute[sid][i] = 1 ;
+				}
+			}
+		}
+
+	preComputeSet.insert(item);
+}
+
+void patternOverlap::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe=0){
+/*
+// Update statistics for algorithms sequentially removing elements (for example, the reverse greedy algorithm).
+// The safety parameter 'safe' controls the safety and speed of this procedure. If not sure how to use it, set it to it's default value, viz. 1
+// If safe = 0, (for the sake of speed) we do not check if item belong to the subset. We also do not check if the preComputed statistics actually points to the set sset. You would need to check both these.
+	if (safe == 1){
+		if(sset.find(item) == sset.end()){
+			cout<<"Error in using updateStatisticsRemove: the provided item does not belong to the subset\n";
+			return;
+		}
+		if(sset != preComputeSet)
+			setpreCompute(sset);
+	}
+
+	int tmp,i;
+	int pLen=pattern2Length[item];
+	for(std::vector<int>::iterator itt = patternsData[item].begin(); itt != patternsData[item].end(); ++itt) {
+			//tmp=patternsData[item][*itt];
+			tmp=(*itt);
+			for(i=0;i<pLen;++i){
+				--preCompute[tmp+i];
+			}
+		}
+	preComputeSet.erase(item);
+*/
+cout <<"\Inside patternOverlap::updateStatisticsRemove n";
+}
+void patternOverlap::setpreCompute(const unordered_set<int>& sset){
+	clearpreCompute();
+	unordered_set<int>::const_iterator it;
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		updateStatisticsAdd(sset, *it);
+	}
+}
+
+void patternOverlap::clearpreCompute(){
+	bitCorpus_preCompute=bitCorpus_empty;
+	preComputeSet.clear();
+}

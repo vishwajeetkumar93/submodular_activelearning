@@ -1,0 +1,29 @@
+1. Extract sentence given its sentenceID from xmlInputDocument
+
+%--------------------------------------------------------------------------------------------------------------------
+id=SentenceID
+wordCount= `cat xmlInputDocument.xml | grep -oP "(?<=Sentence id=\"$id\" wordCount=\").*?(?=\">)"`
+cat xmlInputDocument.xml | grep -oP "(?<=Sentence id=\"$id\" wordCount=\"$wordCount\">).*?(?=</Sentence>)"
+%--------------------------------------------------------------------------------------------------------------------
+
+
+extract sentences having the regex stored in pattern variable
+
+%----------------------------------------------------------------------------------------------------------
+cat xmlInputDocument.xml |sed "s/  \+/ /g" | grep -oP "[^<]*$pattern[^<]*</Sentence>"
+%----------------------------------------------------------------------------------------------------------
+
+
+
+
+execute code and get patternText
+%----------------------------------------------------------------------------------------------------------
+./sfoGoodPatterns 1 10 0 | tail -n1 | ./TestData/getGlobalIdList.py | ./TestData/getPatternText.py 
+%----------------------------------------------------------------------------------------------------------
+
+
+extract pattern text given id
+%----------------------------------------------------------------------------------------------------------
+cat TestData/XMLFile_spans.xml | grep -n1 '<PATTERN id="538">' | grep "PATTERN_TEXT"
+%----------------------------------------------------------------------------------------------------------
+

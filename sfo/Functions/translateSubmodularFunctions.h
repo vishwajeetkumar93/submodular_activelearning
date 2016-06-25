@@ -1,0 +1,67 @@
+/*
+ *	Translating submodular functions h(X) = f(x)+value
+ */
+
+class translateSubmodularFunctions: public submodularFunctions{
+	protected:
+	submodularFunctions* f;
+	double value;
+	public:
+	// Functions
+	translateSubmodularFunctions(unordered_set<int>& groundSet, submodularFunctions* f, double value);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); // Set preCompute for removing elements.
+	void clearpreCompute();
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+translateSubmodularFunctions::translateSubmodularFunctions(unordered_set<int>& groundSet, submodularFunctions* f, double lambda): submodularFunctions(groundSet), f(f), value(lambda){}
+
+double translateSubmodularFunctions::eval(const unordered_set<int>& sset){
+	return value+f->eval(sset);
+}
+
+double translateSubmodularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	return value+f->evalFast(sset, safe);
+}
+
+double translateSubmodularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	return f->evalGainsadd(sset, item);
+}
+
+double translateSubmodularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	return f->evalGainsremove(sset, item);
+}
+
+double translateSubmodularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	return f->evalGainsaddFast(sset, item, safe);
+}
+
+double translateSubmodularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	return f->evalGainsremoveFast(sset, item, safe);
+}
+
+void translateSubmodularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsAdd(sset, item, safe);
+}
+
+void translateSubmodularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsRemove(sset, item, safe);
+}
+
+void translateSubmodularFunctions::clearpreCompute(){
+	f->clearpreCompute();
+}
+
+void translateSubmodularFunctions::setpreCompute(const unordered_set<int>& sset){
+	f->setpreCompute(sset);
+}
+

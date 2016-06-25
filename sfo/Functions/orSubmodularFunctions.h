@@ -1,0 +1,104 @@
+/*
+ *	ORing two submodular function f and g: h(X) = B_2 f(X) + B_1 g(X) - f(X)g(X). This function is submodular as long as \lambda_1 >= 0.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class orSubmodularFunctions: public submodularFunctions{
+	protected:
+	submodularFunctions* f;
+	submodularFunctions* g;
+	double B1;
+	double B2;
+	double preComputefval;
+	double preComputegval;
+	public:
+	// Functions
+	orSubmodularFunctions(submodularFunctions* f, submodularFunctions* g, double B1, double B2);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); // Set preCompute for removing elements.
+	void clearpreCompute();
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+orSubmodularFunctions::orSubmodularFunctions(submodularFunctions* f, submodularFunctions* g, double B1, double B2): submodularFunctions(f->getGroundSet()), f(f), g(g), B1(B1), B2(B2){}
+
+
+double orSubmodularFunctions::eval(const unordered_set<int>& sset){
+	double fval = f->eval(sset);
+	double gval = g->eval(sset);
+	return B2*fval + B1*gval - fval*gval;
+}
+
+double orSubmodularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	return B2*preComputefval + B1*preComputegval - preComputefval*preComputegval;
+}
+
+double orSubmodularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	double fval = f->eval(sset);
+	double gval = g->eval(sset);
+	double fgains = f->evalGainsadd(sset, item);
+	double ggains = g->evalGainsadd(sset, item);	
+	return B2*fgains + B1*ggains - (fval + fgains)*(gval + ggains) - fval*gval;
+}
+
+double orSubmodularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	double fval = f->eval(sset);
+	double gval = g->eval(sset);
+	double fgains = f->evalGainsadd(sset, item);
+	double ggains = g->evalGainsremove(sset, item);	
+	return B2*fgains + B1*ggains - fval*gval + (fval - fgains)*(gval - ggains);
+}
+
+double orSubmodularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	double fval = preComputefval;
+	double gval = preComputegval;
+	double fgains = f->evalGainsaddFast(sset, item);
+	double ggains = g->evalGainsaddFast(sset, item);	
+	return B2*fgains + B1*ggains - (fval + fgains)*(gval + ggains) - fval*gval;
+}
+
+double orSubmodularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	double fval = preComputefval;
+	double gval = preComputegval;
+	double fgains = f->evalGainsremoveFast(sset, item);
+	double ggains = g->evalGainsremoveFast(sset, item);	
+	return B2*fgains + B1*ggains - fval*gval + (fval - fgains)*(gval - ggains);
+}
+
+void orSubmodularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsAdd(sset, item, safe);
+	g->updateStatisticsAdd(sset, item, safe);
+	preComputefval = f->evalFast(sset, safe);
+	preComputegval = g->evalFast(sset, safe);
+}
+
+void orSubmodularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsRemove(sset, item, safe);
+	g->updateStatisticsRemove(sset, item, safe);
+	preComputefval = f->evalFast(sset, safe);
+	preComputegval = g->evalFast(sset, safe);
+}
+
+void orSubmodularFunctions::clearpreCompute(){
+	f->clearpreCompute();
+	g->clearpreCompute();
+	preComputefval = 0;
+	preComputegval = 0;
+}
+
+void orSubmodularFunctions::setpreCompute(const unordered_set<int>& sset){
+	f->setpreCompute(sset);
+	g->setpreCompute(sset);
+	preComputefval = f->evalFast(sset, 0);
+	preComputegval = g->evalFast(sset, 0);
+}
+

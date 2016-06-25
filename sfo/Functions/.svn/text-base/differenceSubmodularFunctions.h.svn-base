@@ -1,0 +1,73 @@
+/*
+ *	Combining two submodular functions h(X) = \lambda_1 f(X) + \lambda_2 g(X), for two submodular functions f and g.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class differenceSubmodularFunctions: public submodularFunctions{
+	protected:
+	submodularFunctions* f;
+	submodularFunctions* g;
+	double lambda1;
+	double lambda2;
+	public:
+	// Functions
+	differenceSubmodularFunctions(submodularFunctions* f,submodularFunctions* g, double lambda1, double lambda2);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); // Set preCompute for removing elements.
+	void clearpreCompute();
+};
+
+differenceSubmodularFunctions::differenceSubmodularFunctions(submodularFunctions* f,submodularFunctions* g, double lambda1, double lambda2): submodularFunctions(f->getGroundSet()), f(f), g(g), lambda1(lambda1), lambda2(lambda2){}
+
+double differenceSubmodularFunctions::eval(const unordered_set<int>& sset){
+	return lambda1*f->eval(sset) - lambda2*g->eval(sset);
+}
+
+double differenceSubmodularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	return lambda1*f->evalFast(sset, safe) - lambda2*g->evalFast(sset, safe);
+}
+
+double differenceSubmodularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	return lambda1*f->evalGainsadd(sset, item) - lambda2*g->evalGainsadd(sset, item);
+}
+
+double differenceSubmodularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	return lambda1*f->evalGainsremove(sset, item) - lambda2*g->evalGainsremove(sset, item);
+}
+
+double differenceSubmodularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	return lambda1*f->evalGainsaddFast(sset, item, safe) -lambda2*g->evalGainsaddFast(sset, item, safe);
+}
+
+double differenceSubmodularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	return lambda1*f->evalGainsremoveFast(sset, item, safe) - lambda2*g->evalGainsremoveFast(sset, item, safe);
+}
+
+void differenceSubmodularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsAdd(sset, item, safe);
+	g->updateStatisticsAdd(sset, item, safe);
+}
+
+void differenceSubmodularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsRemove(sset, item, safe);
+	g->updateStatisticsRemove(sset, item, safe);
+}
+
+void differenceSubmodularFunctions::clearpreCompute(){
+	f->clearpreCompute();
+	g->clearpreCompute();
+}
+
+void differenceSubmodularFunctions::setpreCompute(const unordered_set<int>& sset){
+	f->setpreCompute(sset);
+	g->setpreCompute(sset);
+}
+

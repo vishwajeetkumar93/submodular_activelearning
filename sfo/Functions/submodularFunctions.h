@@ -1,0 +1,75 @@
+/*
+ *	Abstract base class for submodular functions
+	Author: Rishabh Iyer
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class submodularFunctions : public setFunctions{
+	public:
+	submodularFunctions(unordered_set<int>& groundSet): setFunctions(groundSet){}
+	virtual ~submodularFunctions(){}
+	void getSubgradient(totalOrder<double> ordering, const unordered_set<int>& sset, vector<double>& subgradient); // Obtain a subgradient (modular lower bound) for a given set and ordering.
+	void modularUpperBoundA(const unordered_set<int>& sset, vector<double>& mupper, double& moffset); // Obtain a supergradient (modular upper bound) A for a given set.
+	void modularUpperBoundB(const unordered_set<int>& sset, vector<double>& mupper, double& moffset); // Obtain a supergradient (modular upper bound) B for a given set.
+	// Both the above are not normalized vectors and are hence represented as a vector mupper and an offset moffset.
+	virtual double currentCoverage() {return 0.0;}
+	virtual	void initializeFinalSet() {}
+};
+
+void submodularFunctions::getSubgradient(totalOrder<double> ordering, const unordered_set<int>& sset, vector<double>& subgradient){
+// Check if the input ordering is consistent with the input sset.
+	std::unordered_set<int> checkset = std::unordered_set<int>();
+	for(int i = 0; i < sset.size(); i++)
+		checkset.insert(checkset.end(), ordering[i]);
+	if (sset != checkset){
+		cout<<"Error: Inputed ordering inconsistent with the inputed set\n";
+		return;
+	}
+	subgradient.resize(n);
+	unordered_set<int>::iterator it;
+	unordered_set<int> currset = unordered_set<int>();
+	clearpreCompute();
+	for(int i = 0; i < n; i++) {
+		subgradient[ordering[i]] = evalGainsaddFast(currset, ordering[i]);
+		currset.insert(ordering[i]);
+		updateStatisticsAdd(currset, ordering[i]);
+	}
+}
+
+void submodularFunctions::modularUpperBoundA(const unordered_set<int>& sset, std::vector<double>& mupper, double& moffset){//std::vector<double> lastgains,
+	moffset = 0;
+	unordered_set<int>::const_iterator it;
+	setpreCompute(sset);
+	for( it = groundSet.begin(); it != groundSet.end(); it++ ) {
+		if(sset.find(*it) == sset.end()) {// *it is not in sset
+			mupper[*it] = evalGainsaddFast(sset, *it);
+		}
+	}
+	setpreCompute(groundSet);
+	for( it = sset.begin(); it != sset.end(); it++ ) {
+		mupper[*it] = evalGainsremoveFast(groundSet, *it);
+		moffset-= mupper[*it];
+	}
+	moffset+=eval(sset);
+}
+
+void submodularFunctions::modularUpperBoundB(const unordered_set<int>& sset, std::vector<double>& mupper, double& moffset){
+	moffset = 0;
+	std::unordered_set<int> Vsset;
+	std::unordered_set<int> emptyset = std::unordered_set<int>();
+	unordered_set<int>::const_iterator it;
+	clearpreCompute();
+	for( it = groundSet.begin(); it != groundSet.end(); it++ ) {
+		if(sset.find(*it) == sset.end()){// *it is not in sset
+			mupper[*it] = evalGainsaddFast(emptyset, *it);
+		}
+	}
+	setpreCompute(sset);
+	for( it = sset.begin(); it != sset.end(); it++ ) {
+		mupper[*it] = evalGainsremoveFast(sset, *it);
+		moffset-= mupper[*it];
+	}
+	moffset+=eval(sset);
+}
+

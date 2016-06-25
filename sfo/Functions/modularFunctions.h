@@ -1,0 +1,112 @@
+/*
+ *	Header file for defining a modular function: f(X) = m(X) + c = \sum_{i \in X} m_i + c 
+	Author: Rishabh Iyer
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class modularFunctions: public submodularFunctions{
+	public:
+	vector<double> weight; // m_i's
+	double offset; // c
+	double preCompute; // stores m(X) 
+	// Functions
+	modularFunctions(unordered_set<int>& groundSet, char* file,double offsetVal);//read from file
+	modularFunctions(std::unordered_set<int>& groundset, vector<double>& weightin, double offsetin);
+	~modularFunctions();
+	void readModularfunction(char* file);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item); 
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe); 
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset);
+	void clearpreCompute();
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+modularFunctions::modularFunctions(unordered_set<int>& groundSet, char* file, double offsetVal=0): submodularFunctions(groundSet){
+	offset=offsetVal;
+	readModularfunction(file);
+}
+
+modularFunctions::modularFunctions(std::unordered_set<int>& groundset, vector<double>& weight, double offset): submodularFunctions(groundSet), weight(weight), offset(offset){}
+
+modularFunctions::~modularFunctions(){}
+
+void modularFunctions::readModularfunction(char* file){
+	double tmpd; 
+	ifstream iFile;
+	//printf("Reading list of costs from %s...\n", file);
+	iFile.open(file, ios::in);
+	if (!iFile.is_open()){
+		printf("Use unit cost for each item\n");
+		for (int i=0; i<n; i++) {	
+			weight.push_back(1.0);
+		}	
+	}
+	else {
+		for (int i=0; i<n; i++) {
+			iFile >> tmpd;
+			weight.push_back(tmpd);
+		}
+	}
+	iFile.close();
+}
+
+double modularFunctions::eval(const unordered_set<int>& sset){
+// Evaluation of function valuation.
+	double sum = offset;
+	unordered_set<int>::const_iterator it;
+	for( it = sset.begin(); it != sset.end(); it++ ) {
+		sum+=weight[*it];
+	}
+    return sum;
+}
+
+double modularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+// Evaluation of function valuation.
+	return preCompute + offset;
+}
+
+double modularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	return weight[item];
+} 
+
+double modularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	return weight[item];
+} 
+
+double modularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe){
+	return evalGainsadd(sset, item);
+}
+
+double modularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe){
+	return evalGainsremove(sset, item);
+
+}
+	
+void modularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	preCompute+=weight[item];
+}
+
+void modularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	preCompute-=weight[item];
+}
+
+void modularFunctions::setpreCompute(const unordered_set<int>& sset){
+	clearpreCompute();
+	unordered_set<int>::const_iterator it;
+	for( it = sset.begin(); it != sset.end(); it++ ){
+		updateStatisticsAdd(sset, *it);
+	}
+}
+
+void modularFunctions::clearpreCompute(){
+	preCompute = 0;
+}
+

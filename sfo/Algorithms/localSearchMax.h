@@ -1,0 +1,49 @@
+/*
+*	The Local Search Algorithm for non-monotone submodular Maximization by Feige et al (2007). This gives a 1/3 approximation for unconstrained maximization.
+	This is an accelerated version with priority queue (Minoux 1976).
+	Solves the problem \max_{X \subseteq V} f(X), where f is a non-monotone submodular function.
+	Special case of this is the problem, \max_{|X| \leq k} f(X).
+	Anthor: Rishabh Iyer
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+ #ifndef __LOCALSEARCH_INCLUDED__
+#define __LOCALSEARCH_INCLUDED__
+
+#define LARGE_NUM 1e50
+#define EPSILON 1e-10
+
+std::unordered_set<int> localSearchMax(submodularFunctions& f, std::unordered_set<int> startSet = unordered_set<int>(), int verbosity = 11){
+	int nSelected = 0 ; // number of items selected
+	unordered_set<int> currSet = startSet;
+	unordered_set<int> newSet;
+	double currVal = 0;
+	double newVal = 0;
+	vector<double> defCosts(f.getSize(), 1);
+	while(1){
+		// Upward Greedy Pass.
+		newSet = lazyGreedyMax(f, defCosts, LARGE_NUM, currSet, verbosity,1 );
+		if(verbosity > 0)
+		{
+			cout<<"Size of currset "<<currSet.size()<<" and size of newset "<<newSet.size()<<"\n";
+			cout<<"Value after upward Pass is "<<f.eval(newSet)<<".\n";
+			}
+        	if(f.eval(newSet) - f.eval(currSet) < EPSILON)
+        		break;
+        	else
+        		currSet = newSet;
+		// Reverse Greedy Pass
+		newSet = revlazyGreedyMax(f, currSet, verbosity);
+		if(verbosity > 0)
+		{
+			cout<<"Size of currset "<<currSet.size()<<" and size of newset "<<newSet.size()<<"\n";
+			cout<<"Value after downward Pass is "<<f.eval(newSet)<<".\n";
+			}
+        	if(f.eval(newSet) - f.eval(currSet) < EPSILON)
+        		break;
+        	else
+        		currSet = newSet;
+	}
+	return currSet;
+}
+#endif

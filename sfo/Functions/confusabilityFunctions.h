@@ -1,0 +1,540 @@
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cmath>
+#include <unordered_map>
+#include <unordered_set>
+
+using namespace std;
+
+
+class confusabilityFunctions: public submodularFunctions	
+{
+public:
+	confusabilityFunctions(unordered_set<int>& groundSet,  const char* transcriptFile, const char* scoreFile, const char* partitionFile, const char* wordMapFile);
+	
+	void LoadWordMap( const char* wordMapFile);
+	void LoadTranscription(const char* transcriptFile);
+	void LoadModularScore(const char* scoreFile);
+	void LoadPartition(const char* partitionFile);
+	
+	double eval(const unordered_set<int>& current_set);
+	double evalFast(const unordered_set<int>& current_set, bool safe); 
+	double evalGainsadd(const unordered_set<int>& current_set, int id);
+	double evalGainsremove(const unordered_set<int>& current_set, int id);
+	double evalGainsaddFast(const unordered_set<int>& current_set, int id, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& current_set, int id, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& current_set, int id, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& current_set, int id, bool safe);
+	void clearpreCompute();
+	void setpreCompute(const unordered_set<int>& current_set);
+	unordered_set<int> getVocabulary(const unordered_set<int>& sset);
+	
+	unordered_map< string, int >		mWord2Id;
+	unordered_map< int, string > 		mId2Word;		
+	vector<string>						mUttrMap;
+	vector<double>						mScoreMap;
+	vector< vector<int> > 				mTranscripts;
+	vector< unordered_set<int> > 		mTokens;
+	
+	unordered_map<int, int>				mPartitionMap;
+	unordered_set<int>					mPartitionLabels;
+	int									mNumPartitons;
+	
+	int									mNumUttr;
+	int									mNumWord;
+
+	vector< int >						mPreCompute;
+	vector< unordered_map<int, int> > 	mPrePartition;
+	double 								mCurrentValue;
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+	
+};
+
+confusabilityFunctions::confusabilityFunctions(unordered_set<int>& groundSet, const char* transcriptFile, const char* scoreFile, const char* partitionFile, const char* wordMapFile): submodularFunctions(groundSet)
+{	
+	LoadWordMap(wordMapFile);
+	LoadTranscription(transcriptFile);
+	LoadModularScore(scoreFile);
+	LoadPartition(partitionFile);	
+	mCurrentValue = 0;
+}
+
+void confusabilityFunctions::LoadWordMap(const char* wordMapFile)
+{
+	
+	ifstream iFile(wordMapFile);
+	
+	{
+		string line;	
+		if (iFile.is_open())
+		{
+			while (getline(iFile, line))
+			{
+				istringstream currentline(line);
+				string word_name;
+				unsigned int word_id;
+				currentline >> word_name >> word_id;
+				mWord2Id[word_name] = word_id;
+				mId2Word[word_id] = word_name;
+			}
+		}
+	}
+	cout << "Load word map from " << wordMapFile << endl;
+		
+}
+
+
+void confusabilityFunctions::LoadTranscription(const char* transcriptFile)
+{
+	
+	ifstream iFile(transcriptFile);
+	string line;
+	
+	if (iFile.is_open())
+	{
+		while (getline(iFile, line))
+		{
+			istringstream currentline(line);
+			string uttr_id;
+			vector<int> trans;
+			int token;
+			currentline >> uttr_id;
+			mUttrMap.push_back(uttr_id);
+			while (currentline >> token)
+			{
+				trans.push_back(token);
+			}
+			mTranscripts.push_back(trans);
+			
+			unordered_set<int> tokens(trans.begin(), trans.end());
+			mTokens.push_back(tokens);
+		}
+	}	
+	
+	mNumUttr = mTranscripts.size();
+	
+	cout << "Reading transcript from file " << transcriptFile << endl;
+}
+
+void confusabilityFunctions::LoadModularScore(const char* scoreFile)
+{
+	
+	ifstream iFile(scoreFile);
+	string line;
+	
+	if (iFile.is_open())
+	{
+		while (getline(iFile,line))
+		{
+			istringstream currentline(line);
+			double weight;
+			currentline >> weight;
+			mScoreMap.push_back(weight);
+		}
+	}
+	
+	mNumWord = mScoreMap.size();
+	cout << "Reading word score from file " << scoreFile << endl;
+}
+
+
+
+void confusabilityFunctions::LoadPartition(const char* partitionFile)
+{
+	
+	ifstream iFile(partitionFile);
+	string line;
+	
+	if (iFile.is_open())
+	{
+		while (getline(iFile,line))
+		{
+			istringstream currentline(line);
+			string word;
+			int partition_id;;
+			currentline >> word >> partition_id;
+			mPartitionMap[mWord2Id[word]]=partition_id;
+			// cout << word << ", id " <<  mWord2Id[word] << " : " << partition_id << "\n";
+			mPartitionLabels.insert(partition_id);
+		}
+	}
+	mNumPartitons = mPartitionLabels.size();
+	
+	// for those words not found in the confusable word pairs
+	// treat each word as an individual partition
+	for (int i = 0; i < mNumWord; i++)
+	{
+		if (mPartitionMap.find(i) == mPartitionMap.end())
+		{
+			mPartitionMap[i]=mNumPartitons;
+			mPartitionLabels.insert(mNumPartitons);
+			mNumPartitons++;			
+		}
+	}
+
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		mPreCompute.push_back(0.0);
+		std::unordered_map<int,int> S;
+		mPrePartition.push_back(S);
+	}
+	
+	cout << "Reading partitions from file " << partitionFile << endl;
+	cout << "Number of partitions " << mPartitionLabels.size() << endl;
+
+}
+
+double confusabilityFunctions::eval(const unordered_set<int>& current_set)
+{
+	double value = 0.0;
+
+	vector<int> comp_value;
+	vector< unordered_map<int,int> > comp_set;
+	
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		comp_value.push_back(0);
+		unordered_map<int,int> S;
+		comp_set.push_back(S);
+	}
+	// iterate through the original set
+	for (unordered_set<int>::const_iterator it = current_set.begin();
+		it != current_set.end(); it++)
+	{
+		//unordered_set<int> cur_token(mTokens[*it]);
+		for (unordered_set<int>::iterator it2 = mTokens[*it].begin(); it2 != mTokens[*it].end(); it2++)
+		{
+			int partition_id = mPartitionMap[*it2];
+
+		
+			if (comp_set[partition_id].find(*it2) == comp_set[partition_id].end())
+			{
+				comp_value[partition_id] += mScoreMap[*it2];
+				// add this newly observed token into the corresponding partition set
+			}						
+			comp_set[partition_id][*it2] += 1;								
+			
+		}		
+	}
+
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		value += sqrt(comp_value[i]);
+	}
+
+	return value;
+}
+
+double confusabilityFunctions::evalFast(const unordered_set<int>& current_set, bool safe)
+{
+	double value = 0.0;
+	
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		value += sqrt(mPreCompute[i]);
+	}
+	
+	
+	return value;
+	
+}
+
+double confusabilityFunctions::evalGainsadd(const unordered_set<int>& current_set, int id)
+{
+	vector<int> comp_value;
+	vector< unordered_set<int> > comp_set;
+	
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		comp_value.push_back(0);
+		unordered_set<int> S;
+		comp_set.push_back(S);
+	}
+	// iterate through the original set
+	for (unordered_set<int>::const_iterator it = current_set.begin();
+		it != current_set.end(); it++)
+	{
+		//unordered_set<int> cur_token(mTokens[*it]);
+		for (unordered_set<int>::iterator it2 = mTokens[*it].begin(); it2 != mTokens[*it].end(); it2++)
+		{
+			int partition_id = mPartitionMap[*it2];
+
+			if (comp_set[partition_id].find(*it2) == comp_set[partition_id].end())
+			{
+				comp_value[partition_id] += mScoreMap[*it2];
+				comp_set[partition_id].insert(*it2);				
+			}									
+			
+		}		
+	}
+	
+	// check the gain of the new element
+	double sum_increment = 0;	
+	double *increment = new double[mNumPartitons];
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		increment[i] = 0;
+	}
+	
+	std::unordered_set<int> new_token(mTokens[id]);
+	// compute the increment
+	for (std::unordered_set<int>::iterator it = new_token.begin(); it != new_token.end(); it++)
+	{
+		// find the corresponding partition id
+		// and compute the increment if the token is not observed in the partition
+		int partition_id = mPartitionMap[*it];
+		if (comp_set[partition_id].find(*it) == comp_set[partition_id].end())
+		{
+			increment[partition_id]+=mScoreMap[*it];
+			// mPrePartition[partition_id][*it]+=1;
+		}			
+	}
+
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		sum_increment += (sqrt(comp_value[i]+increment[i])-sqrt(comp_value[i]));
+	}
+	
+	delete[] increment;
+		
+	return sum_increment;
+	
+}
+
+double confusabilityFunctions::evalGainsremove(const unordered_set<int>& current_set, int id)
+{
+	vector<int> comp_value;
+	vector< unordered_set<int> > comp_set;
+	
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		comp_value.push_back(0);
+		unordered_set<int> S;
+		comp_set.push_back(S);
+	}
+	
+	
+	// iterate through the original set
+	for (unordered_set<int>::const_iterator it = current_set.begin();
+		it != current_set.end(); it++)
+	{
+		if (*it != id)
+		{
+			for (unordered_set<int>::iterator it2 = mTokens[*it].begin(); it2 != mTokens[*it].end(); it2++)
+			{
+				int partition_id = mPartitionMap[*it2];
+
+				if (comp_set[partition_id].find(*it2) == comp_set[partition_id].end())
+				{
+					comp_value[partition_id] += mScoreMap[*it2];
+					comp_set[partition_id].insert(*it2);	
+				}						
+			
+			}					
+		}
+	}
+	
+	// check the gain of the new element
+	double sum_increment = 0;	
+	double *increment = new double[mNumPartitons];
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		increment[i] = 0;
+	}
+	
+	std::unordered_set<int> new_token(mTokens[id]);
+	// compute the increment
+	for (std::unordered_set<int>::iterator it = new_token.begin(); it != new_token.end(); it++)
+	{
+		int partition_id = mPartitionMap[*it];
+		if (comp_set[partition_id].find(*it) == comp_set[partition_id].end())
+		{
+			increment[partition_id]+=mScoreMap[*it];
+		}			
+	}
+
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		sum_increment += (sqrt(comp_value[i]+increment[i])-sqrt(comp_value[i]));
+	}
+	
+	delete[] increment;
+		
+	return sum_increment;
+}
+
+
+
+
+double confusabilityFunctions::evalGainsaddFast(const unordered_set<int>& current_set, int id, bool safe)
+{
+	// cout <<"eval gain add begin "<<current_set.size() <<"\n";
+	double sum_increment = 0;	
+	double *increment = new double[mNumPartitons];
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		increment[i] = 0;
+	}
+
+	// compute the increment
+	for (std::unordered_set<int>::iterator it = mTokens[id].begin(); it != mTokens[id].end(); it++)
+	{
+		// find the corresponding partition id
+		// and compute the increment if the token is not observed in the partition
+		int partition_id = mPartitionMap[*it];
+		if (mPrePartition[partition_id].find(*it) == mPrePartition[partition_id].end())
+		{
+			increment[partition_id]+=mScoreMap[*it];
+			// mPrePartition[partition_id][*it]+=1;
+		}			
+	}
+	
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		sum_increment += (sqrt(mPreCompute[i]+increment[i])-sqrt(mPreCompute[i]));
+	}
+	
+	delete[] increment;
+	
+	// cout <<"eval gain add end\n";	
+	return sum_increment;
+}
+
+double confusabilityFunctions::evalGainsremoveFast(const unordered_set<int>& current_set, int id, bool safe)
+{
+	// cout <<"eval gain remove begin\n";
+	double sum_increment = 0;	
+	double *increment = new double[mNumPartitons];
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		increment[i] = 0;
+	}
+	// set of tokens in the new utterances
+	// compute the increment
+	for (std::unordered_set<int>::iterator it = mTokens[id].begin(); it != mTokens[id].end(); it++)
+	{
+		// find the corresponding partition id
+		// and compute the increment if the token is not observed in the partition
+		int partition_id = mPartitionMap[*it];
+		if (mPrePartition[partition_id][*it] == 1)		
+		{
+			increment[partition_id]+=mScoreMap[*it];
+			// cout << *it << " " << increment[partition_id]<<endl;
+		}			
+	}
+	
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		if (increment[i]!=0)
+		{
+			sum_increment += (sqrt(mPreCompute[i])-sqrt(mPreCompute[i]-increment[i]));			
+		}
+
+	}
+	
+	delete[] increment;
+	// cout <<"eval gain remove end\n";
+	return sum_increment;
+}
+
+
+void confusabilityFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int id, bool safe)
+{	
+
+	for (std::unordered_set<int>::iterator it = mTokens[id].begin(); 
+			it != mTokens[id].end(); it++)
+	{
+		int partition_id = mPartitionMap[*it];
+
+		if (mPrePartition[partition_id].find(*it) == mPrePartition[partition_id].end())
+		{
+			mPreCompute[partition_id] += mScoreMap[*it];
+		}			
+		mPrePartition[partition_id][*it] += 1;			
+		
+	}
+
+}
+
+void confusabilityFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int id, bool safe)
+{	
+
+	for (std::unordered_set<int>::iterator it = mTokens[id].begin(); 
+			it != mTokens[id].end(); it++)
+	{
+		int partition_id = mPartitionMap[*it];
+
+		if (mPrePartition[partition_id][*it] == 1)
+		{
+			mPreCompute[partition_id] -= mScoreMap[*it];
+		}			
+		if(mPrePartition[partition_id][*it] == 0)
+		{
+			mPrePartition[partition_id][*it] -= 1;						
+		}
+		
+	}
+
+}
+
+
+void confusabilityFunctions::clearpreCompute()
+{
+
+	mCurrentValue = 0;
+	mPrePartition.clear();
+	for (int i = 0; i < mNumPartitons; i++)
+	{
+		mPreCompute[i]=0;
+		std::unordered_map<int,int> S;
+		mPrePartition.push_back(S);
+	}	
+	
+}
+
+void confusabilityFunctions::setpreCompute(const unordered_set<int>& sset)
+{
+	clearpreCompute();
+	// cout <<"set precompute begin\n";
+	for (unordered_set<int>::const_iterator it = sset.begin();
+		it != sset.end(); it++)
+	{
+		//unordered_set<int> cur_token(mTokens[*it]);
+		for (unordered_set<int>::iterator it2 = mTokens[*it].begin(); it2 != mTokens[*it].end(); it2++)
+		{
+			int partition_id = mPartitionMap[*it2];
+
+			if (mPrePartition[partition_id].find(*it2) == mPrePartition[partition_id].end())
+			{
+				mPreCompute[partition_id] += mScoreMap[*it2];
+				// add this newly observed token into the corresponding partition set
+			}						
+			mPrePartition[partition_id][*it2] += 1;			
+			
+		}		
+	}
+	// cout <<"set precompute done\n";
+}	
+
+unordered_set<int> confusabilityFunctions::getVocabulary(const unordered_set<int>& sset)
+{
+	setpreCompute(sset);
+	unordered_set<int> vocabIDs = unordered_set<int>();
+	vocabIDs.clear();
+	
+	for(int i = 0; i < mPrePartition.size(); i++)
+	{
+		for (unordered_map<int, int>::iterator it= mPrePartition[i].begin(); it != mPrePartition[i].end(); it++)
+		{
+			if (it->second > 0)
+			{
+				vocabIDs.insert(it->first);
+			}
+		}
+	}
+	return vocabIDs;
+}

@@ -1,0 +1,333 @@
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+
+using namespace std;
+
+class complexityFunctions: public submodularFunctions
+{
+public:
+	vector<string>	mUttrMap;
+	vector<double>	mScoreMap;
+	vector< vector<int> > mTranscripts;
+	vector< unordered_set<int> > mTokens;
+	unordered_map<int,int>	mPreCompute;
+	int mNumUttr;
+	int mNumWord;
+	double mCurrentValue;
+
+	// Functions
+	complexityFunctions(unordered_set<int>& groundset, char* transcriptFile, char* scoreFile);
+	complexityFunctions(unordered_set<int>& groundSet, char* transcriptFile, int mNumWord);
+	void LoadTranscription(char* transcriptFile);
+	void LoadModularScore(char* scoreFile);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void clearpreCompute();
+	void setpreCompute(const unordered_set<int>& current_set);
+	unordered_set<int> getVocabulary(const unordered_set<int>& sset);
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+complexityFunctions::complexityFunctions(unordered_set<int>& groundSet, char* transcriptFile, char* scoreFile): submodularFunctions(groundSet)
+{
+	LoadTranscription(transcriptFile);
+	LoadModularScore(scoreFile);
+	for (int i = 0; i < mNumWord; i++)
+	{
+		mPreCompute[i] = 0;
+	}
+	mCurrentValue = 0;
+}
+
+complexityFunctions::complexityFunctions(unordered_set<int>& groundSet, char* transcriptFile, int mNumWord): submodularFunctions(groundSet), mNumWord(mNumWord)
+{// Choose default score of 1.
+	LoadTranscription(transcriptFile);
+	for (int i = 0; i < mNumWord; i++)
+	{
+		mPreCompute[i] = 0;
+		mScoreMap.push_back(1);
+	}
+	mCurrentValue = 0;
+}
+
+void complexityFunctions::LoadTranscription(char* transcriptFile)
+{
+	
+	ifstream iFile(transcriptFile);
+	string line;
+	
+	if (iFile.is_open())
+	{
+		while (getline(iFile, line))
+		{
+			istringstream currentline(line);
+			string uttr_id;
+			vector<int> trans;
+			int token;
+			currentline >> uttr_id;
+			mUttrMap.push_back(uttr_id);
+			while (currentline >> token)
+			{
+				trans.push_back(token);
+			}
+			mTranscripts.push_back(trans);
+			
+			unordered_set<int> tokens(trans.begin(), trans.end());
+			mTokens.push_back(tokens);
+		}
+	}	
+	
+	mNumUttr = mTranscripts.size();
+}
+
+void complexityFunctions::LoadModularScore(char* scoreFile)
+{
+	
+	ifstream iFile(scoreFile);
+	string line;
+	
+	if (iFile.is_open())
+	{
+		while (getline(iFile,line))
+		{
+			istringstream currentline(line);
+			double weight;
+			currentline >> weight;
+			mScoreMap.push_back(weight);
+		}
+	}
+	
+	mNumWord = mScoreMap.size();
+}
+
+
+double complexityFunctions::eval(const unordered_set<int>& current_set)
+{	
+	double val = 0;
+	unordered_set<int> subset_tokens;
+	
+	for (unordered_set<int>::const_iterator it = current_set.begin();
+		it != current_set.end(); it++)
+	{
+		unordered_set<int> cur_token(mTokens[*it]);
+		for (unordered_set<int>::iterator it2 = cur_token.begin(); 
+				it2 != cur_token.end(); it2++)
+		{
+			if (subset_tokens.find(*it2) == subset_tokens.end())
+			{
+				val+=mScoreMap[*it2];
+				subset_tokens.insert(*it2);
+			}			
+		}
+	}	
+	
+	return val;
+}
+
+
+
+double complexityFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0)
+{	
+	return mCurrentValue;
+}
+
+
+double complexityFunctions::evalGainsadd(const unordered_set<int>& current_set, int id)
+{
+	double increment = 0;	
+	
+	// get the set of the corresponding tokens
+	unordered_set<int> subset_tokens;
+	
+	for (unordered_set<int>::const_iterator it = current_set.begin();
+		it != current_set.end(); it++)
+	{
+		unordered_set<int> cur_token(mTokens[*it]);
+		for (unordered_set<int>::iterator it2 = cur_token.begin(); 
+				it2 != cur_token.end(); it2++)
+		{
+			if (subset_tokens.find(*it2) == subset_tokens.end())
+			{
+				subset_tokens.insert(*it2);
+			}			
+		}
+	}	
+	
+	// get increment
+	unordered_set<int> new_token(mTokens[id]);
+	for (unordered_set<int>::iterator it = new_token.begin(); 
+			it != new_token.end(); it++)
+	{
+		if (subset_tokens.find(*it) == subset_tokens.end())
+		{
+			increment+=mScoreMap[*it];
+		}			
+	}
+		
+	return increment;
+}
+
+double complexityFunctions::evalGainsremove(const unordered_set<int>& current_set, int id)
+{
+	double decrement = 0;	
+
+	// get set (current_set\id)
+	unordered_set<int>::const_iterator it = current_set.find(id);
+	if (it==current_set.end())
+	{
+		cerr << "Current set does not contain element " << id<<endl;
+	}
+	//else
+	//{
+	//	current_set.erase(it);		
+	//}
+	
+	// get the set of the corresponding tokens
+	unordered_set<int> subset_tokens;
+	
+	for (unordered_set<int>::const_iterator it = current_set.begin(); it != current_set.end(); it++)
+	{
+		if(*it!=id){
+			unordered_set<int> cur_token(mTokens[*it]);
+			for (unordered_set<int>::iterator it2 = cur_token.begin(); 
+					it2 != cur_token.end(); it2++)
+			{
+				if (subset_tokens.find(*it2) == subset_tokens.end())
+				{
+					subset_tokens.insert(*it2);
+				}			
+			}
+		}
+	}	
+	
+	// get decrement
+	unordered_set<int> new_token(mTokens[id]);
+	for (unordered_set<int>::iterator it = new_token.begin(); 
+			it != new_token.end(); it++)
+	{
+		if (subset_tokens.find(*it) == subset_tokens.end())
+		{
+			decrement+=mScoreMap[*it];
+		}			
+	}
+	
+	return decrement;
+}
+
+
+double complexityFunctions::evalGainsaddFast(const unordered_set<int>& sset, int id, bool safe = 0)
+{
+	double increment = 0;	
+	
+	//unordered_set<int> new_token(mTokens[id]);
+	for (unordered_set<int>::iterator it = mTokens[id].begin(); it != mTokens[id].end(); it++)
+	{
+		// if the token is newly observed, add to increment		
+		if (mPreCompute[*it] == 0)
+		{
+			increment += mScoreMap[*it];			
+		}			
+	}	
+		
+	return increment;
+}
+
+double complexityFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int id, bool safe = 0)
+{
+	double increment = 0;	
+	
+	//unordered_set<int> new_token(mTokens[id]);
+	for (unordered_set<int>::iterator it = mTokens[id].begin(); it != mTokens[id].end(); it++)
+	{
+		// when the token is removed, if the quantity becomes 0
+		// then add to decrement
+		if (mPreCompute[*it] == 1)
+		{
+			increment += mScoreMap[*it];			
+		}			
+	}	
+		
+	return increment;
+}
+
+
+
+void complexityFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int id, bool safe = 0)
+{
+	//unordered_set<int> new_token(mTokens[id]);
+	// compute the increment
+	for (unordered_set<int>::iterator it = mTokens[id].begin(); it != mTokens[id].end(); it++)
+	{
+		if (mPreCompute[*it] == 0)
+		{
+			// mPreCompute.insert(*it);
+			mCurrentValue+=mScoreMap[*it];
+		}
+		mPreCompute[*it] += 1;
+	}			
+}
+
+void complexityFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int id, bool safe = 0)
+{
+	for (unordered_set<int>::iterator it = mTokens[id].begin(); it != mTokens[id].end(); it++)
+	{
+		if (mPreCompute[*it] == 1)
+		{
+			mCurrentValue-=mScoreMap[*it];
+		}
+		if (mPreCompute[*it] > 0) mPreCompute[*it] -= 1;
+	}
+}
+void complexityFunctions::clearpreCompute()
+{
+	for ( int i = 0; i < mNumWord; i++)
+	{
+		mPreCompute[i] = 0;
+	}
+	mCurrentValue = 0;
+	// mPreCompute.clear(); 
+	
+}
+
+void complexityFunctions::setpreCompute(const unordered_set<int>& sset)
+{
+	clearpreCompute();
+	for (unordered_set<int>::const_iterator it = sset.begin();
+		it != sset.end(); it++)
+	{
+		//unordered_set<int> cur_token(mTokens[*it]);
+		for (unordered_set<int>::iterator it2 = mTokens[*it].begin(); it2 != mTokens[*it].end(); it2++)
+		{
+			if (mPreCompute[*it2] == 0)
+			{
+			// mPreCompute.insert(*it);
+			mCurrentValue+=mScoreMap[*it2];
+			}
+			mPreCompute[*it2] += 1;	
+		}		
+	}
+}	
+
+unordered_set<int> complexityFunctions::getVocabulary(const unordered_set<int>& sset){
+	setpreCompute(sset);
+	unordered_set<int> vocabIDs = unordered_set<int>();
+	vocabIDs.clear();
+	for(int i = 0; i < mPreCompute.size(); i++){
+		if(mPreCompute[i] > 0){
+			vocabIDs.insert(i);
+		}
+	}
+	return vocabIDs;
+}

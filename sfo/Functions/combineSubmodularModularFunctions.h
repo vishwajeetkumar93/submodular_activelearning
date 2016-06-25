@@ -1,0 +1,76 @@
+/*
+ *	Combining a submodular function f and a modular function m: h(X) = \lambda_1 f(X) + \lambda_2 m(X). This function is submodular as long as \lambda_1 >= 0.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class combineSubmodularModularFunctions: public submodularFunctions{
+	protected:
+	submodularFunctions* f;
+	modularFunctions* m;
+	double lambda1;
+	double lambda2;
+	public:
+	// Functions
+	combineSubmodularModularFunctions(submodularFunctions* f, modularFunctions* m, double lambda1, double lambda2);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); // Set preCompute for removing elements.
+	void clearpreCompute();
+	double currentCoverage() {return 0.0;}
+	void initializeFinalSet() {}
+};
+
+combineSubmodularModularFunctions::combineSubmodularModularFunctions(submodularFunctions* f, modularFunctions* m, double lambda1, double lambda2): submodularFunctions(f->getGroundSet()), f(f), m(m), lambda1(lambda1), lambda2(lambda2){assert(lambda1 >= 0);}
+
+
+double combineSubmodularModularFunctions::eval(const unordered_set<int>& sset){
+	return lambda1*f->eval(sset) + lambda2*m->eval(sset);
+}
+
+double combineSubmodularModularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	return lambda1*f->evalFast(sset, safe) + lambda2*m->evalFast(sset, safe);
+}
+
+double combineSubmodularModularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	return lambda1*f->evalGainsadd(sset, item) + lambda2*m->evalGainsadd(sset, item);
+}
+
+double combineSubmodularModularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	return lambda1*f->evalGainsremove(sset, item) + lambda2*m->evalGainsremove(sset, item);
+}
+
+double combineSubmodularModularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	return lambda1*f->evalGainsaddFast(sset, item, safe) + lambda2*m->evalGainsaddFast(sset, item, safe);
+}
+
+double combineSubmodularModularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	return lambda1*f->evalGainsremoveFast(sset, item, safe) + lambda2*m->evalGainsremoveFast(sset, item, safe);
+}
+
+void combineSubmodularModularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsAdd(sset, item, safe);
+	m->updateStatisticsAdd(sset, item, safe);
+}
+
+void combineSubmodularModularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsRemove(sset, item, safe);
+	m->updateStatisticsRemove(sset, item, safe);
+}
+
+void combineSubmodularModularFunctions::clearpreCompute(){
+	f->clearpreCompute();
+	m->clearpreCompute();
+}
+
+void combineSubmodularModularFunctions::setpreCompute(const unordered_set<int>& sset){
+	f->setpreCompute(sset);
+	m->setpreCompute(sset);
+}
+

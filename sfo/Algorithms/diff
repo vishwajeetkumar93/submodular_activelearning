@@ -1,0 +1,82 @@
+2,7c2,6
+<  *	The algorithm implemented here is the forward greedy algorithm, and has a 1 - 1/e guarantee for monotone submodular maximization!
+< 	It greedily adds elements untill it violates the budget (and the gain is non-negative). This is an accelerated version with priority queue (Minoux 1976).
+< 	Solves the problem \max_{c(X) \leq B} f(X), where f is a submodular function and c is a modular cost function.
+< 	Special case of this is the problem, \max_{|X| \leq k} f(X).
+< 	Anthor: Rishabh Iyer
+< 	Based on an implementation by Hui Lin.
+---
+>  *	Speed up with accelerated greedy algorithm for submodular set cover (Minoux 1976, Wolsey 1982).
+> 	Solves the problem \min_{f(X) \geq C} m(X), where f is a monotone submodular function and c is a modular cost function.
+> 	This greedy algorithm has a log(n) approximation guarantee for this problem
+> 	Author: Rishabh Iyer
+> 	Email: rkiyer@uw.edu
+18c17
+< 	public:
+---
+> 	public: 
+22c21
+< 
+---
+> 	
+36c35
+< std::unordered_set<int> lazyGreedyMax(submodularFunctions& f, vector<double>& costList, double budget, std::unordered_set<int> startSet = std::unordered_set<int>(), int verbosity=1, double alpha = 1){
+---
+> std::unordered_set<int> lazyGreedySC(submodularFunctions& f, vector<double> costList, double cover, int verbosity = 0, double alpha = 1){
+38c37
+< 	std::unordered_set<int> selectedSet = startSet;
+---
+> 	std::unordered_set<int> selectedSet;
+40,41c39,40
+< 	for(int i=0;i<f.getSize();i++) hashSelected[i]=false;
+< 		double maxV;
+---
+> 	for(int i=0;i<f.getSize();i++) hashSelected[i]=false;	
+>     	double maxV;
+42a42
+>     	double objV = 0;
+44c44
+< 	f.setpreCompute(startSet); // clear the precomputed statistics, in case it is already not cleared, and set it to startSet.
+---
+> 	f.clearpreCompute(); // clear the precomputed statistics, in case it is already not cleared.
+48,49c48,49
+< 	for (int i = 0; i < f.getSize(); i++) {
+< 		rho.push(Increment(f.evalGainsaddFast(selectedSet, i)/pow(costList[i],alpha),i));
+---
+> 	for (int i = 0; i < f.getSize(); i++) { 
+> 		rho.push(Increment(f.evalGainsaddFast(selectedSet, i)/pow(costList[i],alpha),i)); 
+52c52
+< 	FILE *fp = fopen("patternIds.txt", "w");
+---
+> 	FILE *fp = fopen("sctest.txt", "w");
+57a58,61
+> 
+> 	/* print some text */
+> //	const char *text = "Write this to the file";
+> 	
+62c66
+< 		double newV = (maxV - preV)/pow(costList[topid],alpha); // return normalized gain
+---
+> 		double newV = (maxV - preV)/pow(costList[topid],alpha); // return normalized gain 
+72c76,78
+< 		    	if ((currentCost + costList[topid] > budget) || (newV < 0))
+---
+> 		    	if (maxV < cover) 
+> 				selectedSet.insert(topid);
+> 			else
+74d79
+< 			selectedSet.insert(topid);
+75a81
+> 			objV += newV;
+77,78c83,84
+< 			if(verbosity > 0) printf("Selecting %dth sample, curCost/budget = %.6e/%.6e, preV = %.10e, curV = %.10e\n", topid, currentCost, budget, preV, maxV);
+< 			fprintf(fp,"%d\n",topid);
+---
+> 			//if(verbosity >= 0) printf("Selecting %dth sample, curCost/cover = %.6e/%.6e, preV = %.10e, curV = %.10e\n", topid, currentCost, cover, preV, maxV);
+> 			//fprintf(fp, "Selecting %dth sample, curCost/cover = %.6e/%.6e, preV = %.10e, curV = %.10e, curreval = %.10e\n", topid, currentCost, cover, preV, maxV,f.eval(selectedSet));
+82c88
+< 		}
+---
+> 		}    
+83a90
+> 	fclose(fp);	

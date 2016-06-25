@@ -1,0 +1,85 @@
+/*
+ *	The algorithm implemented here is the forward greedy algorithm, and has a 1 - 1/e guarantee for monotone submodular maximization!
+	It greedily adds elements untill it violates the budget (and the gain is non-negative). This is an accelerated version with priority queue (Minoux 1976).
+	Solves the problem \max_{c(X) \leq B} f(X), where f is a submodular function and c is a modular cost function.
+	Special case of this is the problem, \max_{|X| \leq k} f(X).
+	Anthor: Rishabh Iyer
+	Based on an implementation by Hui Lin.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+#define SMALLEST_NUMBER -1e70
+#define LARGEST_NUMBER 1e70
+
+#ifndef __INCREMENT__
+#define __INCREMENT__
+class Increment{
+	public:
+		Increment(){};
+		Increment(double x, int i){ value=x; index=i; }
+		bool operator< (const Increment&) const;
+
+		int get_index() const { return index; }
+		double get_value() const{ return value; }
+	private:
+		int index;
+		double value;
+};
+
+bool Increment::operator< (const Increment& right) const
+{
+	return value < right.value;
+}
+#endif
+
+std::unordered_set<int> lazyGreedyMax(submodularFunctions& f, vector<double>& costList, double budget, std::unordered_set<int> startSet = std::unordered_set<int>(), int verbosity=1, double alpha = 1){
+	int nSelected = 0 ; // number of items selected
+	std::unordered_set<int> selectedSet = startSet;
+	bool* hashSelected = new bool[f.getSize()]; // an index table to show whether an item is selected
+	for(int i=0;i<f.getSize();i++) hashSelected[i]=false;
+		double maxV;
+    	double preV = 0;
+	double currentCost = 0;
+	f.setpreCompute(startSet); // clear the precomputed statistics, in case it is already not cleared, and set it to startSet.
+	// accelerated greedy algorithm implementation
+	priority_queue <Increment> rho;
+	// initilize the priority queue
+	for (int i = 0; i < f.getSize(); i++) {
+		rho.push(Increment(f.evalGainsaddFast(selectedSet, i)/pow(costList[i],alpha),i));
+	}
+	int sort_cnt = 0;
+	FILE *fp = fopen("patternIds.txt", "w");
+	if (fp == NULL)
+	{
+	    printf("Error opening file!\n");
+	    exit(1);
+	}
+	while (! rho.empty()) {
+		int topid = rho.top().get_index();
+		rho.pop();
+		maxV = preV + f.evalGainsaddFast(selectedSet, topid);
+		double newV = (maxV - preV)/pow(costList[topid],alpha); // return normalized gain
+		if (verbosity >= 5) printf("max gain = %.6e, rho->top() = %.6e\n",newV,rho.top().get_value());
+		if (newV < rho.top().get_value()) {
+			rho.push(Increment(newV, topid)); // if condition not satisfied, push back and re-sort
+			sort_cnt++;
+			if (verbosity >= 10) printf("Condition not met, re-sorting queue (%d iterations)\n",sort_cnt);
+		}
+		else {
+			// guaranteed to be optimal because of submodularity
+		    	hashSelected[topid] = true;
+		    	if ((currentCost + costList[topid] > budget) || (newV < 0))
+				break;
+			selectedSet.insert(topid);
+			nSelected++;
+			currentCost += costList[topid];
+			if(verbosity > 0) printf("Selecting %dth sample, curCost/budget = %.6e/%.6e, preV = %.10e, curV = %.10e\n", topid, currentCost, budget, preV, maxV);
+			fprintf(fp,"%d\n",topid);
+			preV = maxV;
+			f.updateStatisticsAdd(selectedSet, topid);
+			sort_cnt = 0;
+		}
+	}
+	return selectedSet;
+}

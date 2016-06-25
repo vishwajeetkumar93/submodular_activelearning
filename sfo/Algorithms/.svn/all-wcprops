@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnrepo/!svn/ver/12743/Rishabh-svn/sfoc++/Algorithms
+END
+minNormPoint.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnrepo/!svn/ver/12441/Rishabh-svn/sfoc++/Algorithms/minNormPoint.h
+END
+bidirGreedyMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnrepo/!svn/ver/12544/Rishabh-svn/sfoc++/Algorithms/bidirGreedyMax.h
+END
+mminModMod.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnrepo/!svn/ver/12441/Rishabh-svn/sfoc++/Algorithms/mminModMod.h
+END
+mminSubSup.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnrepo/!svn/ver/12613/Rishabh-svn/sfoc++/Algorithms/mminSubSup.h
+END
+mminSupSub.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnrepo/!svn/ver/12613/Rishabh-svn/sfoc++/Algorithms/mminSupSub.h
+END
+revlazyGreedyMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnrepo/!svn/ver/12544/Rishabh-svn/sfoc++/Algorithms/revlazyGreedyMax.h
+END
+randomizedGreedyMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnrepo/!svn/ver/12820/Rishabh-svn/sfoc++/Algorithms/randomizedGreedyMax.h
+END
+lazyGreedySC.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnrepo/!svn/ver/12441/Rishabh-svn/sfoc++/Algorithms/lazyGreedySC.h
+END
+mminCC.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnrepo/!svn/ver/12441/Rishabh-svn/sfoc++/Algorithms/mminCC.h
+END
+naiveGreedyMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnrepo/!svn/ver/12762/Rishabh-svn/sfoc++/Algorithms/naiveGreedyMax.h
+END
+Algorithms.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnrepo/!svn/ver/12544/Rishabh-svn/sfoc++/Algorithms/Algorithms.h
+END
+mminSCSC.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnrepo/!svn/ver/12441/Rishabh-svn/sfoc++/Algorithms/mminSCSC.h
+END
+mminSCSK.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnrepo/!svn/ver/12544/Rishabh-svn/sfoc++/Algorithms/mminSCSK.h
+END
+lazyGreedyMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnrepo/!svn/ver/12762/Rishabh-svn/sfoc++/Algorithms/lazyGreedyMax.h
+END
+localSearchMax.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnrepo/!svn/ver/12544/Rishabh-svn/sfoc++/Algorithms/localSearchMax.h
+END
+mminUC.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnrepo/!svn/ver/12441/Rishabh-svn/sfoc++/Algorithms/mminUC.h
+END

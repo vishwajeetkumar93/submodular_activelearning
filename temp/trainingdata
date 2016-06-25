@@ -1,0 +1,568 @@
+1 |BT| (S (PP (NP (PP (NP (PP (NP (PP (NP (PP (NP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))))))))))))) (, 0) (NP (NP (NN 0) (, 0) (NN 0)))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (SBAR (IN 0) (S (NP (NN 0)) (VP (MD 0))))) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (NN 0))) |ET|
+1 |BT| (VP (ADJP (PP (NP (PP (IN 0) (NP (PRP$ 0) (NNS 0)))))) (SBAR (IN 0) (S (S (VP (VBG 0)))))) |ET|
+1 |BT| (NP (NN 0) (, 0) (NN 0) (, 0) (NNS 0) (CC 0) (NN 0)) |ET|
+1 |BT| (VP (NP (PP (NP (PP (NP (NN 0)))))) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+1 |BT| (VP (VP (PP (S (VP (NP (SBAR (S (VP (VP (PP (NP (JJ 0) (NNS 0)))))))))))) (CC 0) (VP (VBG 0) (NP (NP (DT 0) (NN 0))))) |ET|
+1 |BT| (NP (PP (IN 0) (NP (NN 0) (CC 0) (NN 0))) (PP (IN 0))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0) (VBG 0) (NNS 0)))) |ET|
+-1 |BT| (S (NP (NP (NNS 0)) (PP (IN 0) (NP (JJ 0) (NN 0)))) (VP (VBD 0) (NP (NP (JJ 0) (JJ 0) (NN 0))))) |ET|
+-1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (VP (VBZ 0) (NP (JJ 0) (NNS 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0)))))))) |ET|
+1 |BT| (VP (VP (VBD 0) (NP (JJ 0) (NNS 0))) (CC 0)) |ET|
+1 |BT| (NP (JJ 0) (NN 0) (, 0) (NNS 0) (CC 0) (NN 0) (NN 0)) |ET|
+-1 |BT| (VP (NP (NNS 0)) (, 0) (SBAR (IN 0) (S (NP (PRP 0))))) |ET|
+-1 |BT| (VP (VB 0) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (VP (VP (NP (NN 0) (NN 0)) (PP (IN 0) (NP (PRP$ 0) (NN 0))))) (. 0)) |ET|
+1 |BT| (S (S (NP (NN 0)) (VP (VBD 0))) (: 0) (S (NP (NN 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0))))) |ET|
+1 |BT| (S (S (VP (PP (NP (PP (NP (PP (IN 0) (NP (DT 0) (JJ 0))))))))) (, 0) (S (VP (VBN 0)))) |ET|
+-1 |BT| (S (S (VP (PP (NP (CD 0) (NNS 0))))) (NP (DT 0) (NN 0) (CC 0) (JJ 0) (NN 0) (NN 0)) (VP (VBD 0))) |ET|
+-1 |BT| (SQ (NP (PRP 0)) (VP (VB 0) (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (NP (, 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))))) (CC 0)) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (VP (VB 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0))))))) |ET|
+-1 |BT| (VP (VP (NP (NN 0))) (CC 0) (VP (VBD 0) (S (VP (TO 0))))) |ET|
+1 |BT| (NP (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)))))) |ET|
+-1 |BT| (S (S (PP (NP (PP (NP (NN 0) (NN 0))))) (NP (PRP 0)) (VP (VBD 0))) (: 0) (S (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (S (VP (NP (SBAR (S (VP (ADJP (S (VP (VP (NP (PP (IN 0) (NP (NP (JJ 0) (NN 0)) (PP (IN 0) (NP (NN 0)))))))))))))))) (. 0)) |ET|
+1 |BT| (S (NP (NNS 0)) (VP (- 0) ('' 0))) |ET|
+-1 |BT| (VP (VBZ 0) (VP (VBN 0) (SBAR (S (NP (JJ 0)) (VP (VBD 0) (PP (IN 0) (NP (NN 0) (NN 0)))))))) |ET|
+-1 |BT| (S (NP (SBAR (S (VP (VP (S (VP (VP (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0))))))))))))) (VP (VBP 0) (NP (DT 0) (NN 0))) (. 0)) |ET|
+-1 |BT| (S (NP (ADJP (PP (NP (PP (NP (DT 0) (JJ 0) (NN 0))))))) (VP (VBZ 0))) |ET|
+1 |BT| (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (JJ 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0)))))) |ET|
+1 |BT| (S (PP (NP (NN 0))) (NP (NP (DT 0) (JJ 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NP (CD 0)))))) |ET|
+-1 |BT| (S (VP (NP (PRP$ 0) (NNS 0)) (PP (TO 0) (NP (DT 0) (NNS 0)))) (. 0)) |ET|
+-1 |BT| (FRAG (SBAR (S (VP (VP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NN 0))))))))) (. 0)) |ET|
+-1 |BT| (NP (NP (- 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (: 0) (NP (NP (NNS 0)))) |ET|
+1 |BT| (NP (NP (NN 0) (NN 0)) (NP (CD 0))) |ET|
+1 |BT| (VP (PP (NP (PP (IN 0) (NP (JJ 0) (NNS 0))))) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (VP (PP (IN 0) (NP (DT 0) (NNS 0))) (PP (IN 0) (NP (DT 0) (JJ 0) (CD 0)))) |ET|
+-1 |BT| (S (S (NP (PP (NP (NN 0)))) (ADVP (RB 0)) (VP (VBD 0))) (: 0) (S (NP (NP (DT 0))))) |ET|
+-1 |BT| (S (VP (SBAR (S (VP (ADJP (PP (PP (NP (SBAR (S (VP (NP (PP (NP (NN 0) (NN 0) (NN 0))))))))))))))) (. 0)) |ET|
+-1 |BT| (S (VP (VP (NP (PP (NP (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0))))))))) (. 0)) |ET|
+-1 |BT| (S (NP (CD 0)) (VP (MD 0) (VP (VB 0) (NP (NN 0))))) |ET|
+1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (CD 0) (NNS 0)))) |ET|
+1 |BT| (NP (DT 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NP (PP (NP (NN 0)))) (, 0) (NP (NP (NP (VBG 0) (NNS 0))))) |ET|
+1 |BT| (NP (NP (JJ 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0) (NN 0)))) |ET|
+1 |BT| (NP (NP (JJ 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0)))) (, 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (S (VP (VP (VBG 0) (NP (DT 0) (NN 0))))))) |ET|
+-1 |BT| (NP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+-1 |BT| (VP (NP (NN 0)) (SBAR (IN 0) (IN 0) (S (NP (PRP 0)) (VP (MD 0))))) |ET|
+1 |BT| (S (S (VP (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NN 0)))))) (CC 0) (S (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (S (PP (NP (PP (NP (NP (JJ 0) (NN 0)) (CC 0) (NP (JJ 0) (NN 0)))))) (NP (DT 0))) |ET|
+1 |BT| (NP (JJ 0) (PRN (- 0) (X (SYM 0)) (- 0)) (NN 0)) |ET|
+-1 |BT| (NP (NN 0) (S (VP (TO 0) (VP (VB 0) (NP (NP (DT 0) (NN 0)) (ADJP (ADJP (RBR 0)))))))) |ET|
+1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0) (NNS 0)))) |ET|
+-1 |BT| (VP (NP (PP (NP (DT 0) (NN 0)))) (SBAR (WHADVP (WRB 0)) (S (NP (PRP$ 0) (NNS 0))))) |ET|
+-1 |BT| (S (S (VP (SBAR (S (VP (PP (NP (NN 0))) (PP (IN 0) (NP (DT 0) (JJ 0) (JJ 0) (NNS 0)))))))) (CC 0)) |ET|
+1 |BT| (S (NP (PRP 0)) (VP (VBZ 0) (ADJP (JJ 0) (SBAR (S (NP (DT 0))))))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (VP (VBP 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (JJ 0) (NN 0))))) |ET|
+1 |BT| (NP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (CC 0) (NP (NP (NNS 0) (CC 0) (NNS 0)))) |ET|
+-1 |BT| (S (NP (PP (IN 0) (NP (DT 0) (NN 0)))) (VP (VBD 0))) |ET|
+-1 |BT| (S (NP (NN 0)) (VP (VBD 0) (: 0) (S (S (NP (PRP 0)) (VP (VBP 0) (NP (NP (DT 0)))))))) |ET|
+-1 |BT| (SINV (VP (NP (NN 0))) (NP (NN 0) (NNS 0))) |ET|
+1 |BT| (NP (NN 0) (, 0) (NNS 0) (, 0) (NNS 0)) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0))) (NP (CD 0))) |ET|
+1 |BT| (S (CC 0) (SBAR (IN 0) (S (NP (PRP 0))))) |ET|
+-1 |BT| (NP (NP (PP (NP (NNS 0)))) (CC 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))) |ET|
+-1 |BT| (VP (VB 0) (S (NP (POS 0)) (VP (NN 0) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0)))))) |ET|
+1 |BT| (VP (TO 0) (VP (VB 0) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (POS 0)) (ADJP (JJ 0) (PP (- 0) (NP (NP (JJ 0)))))))) |ET|
+-1 |BT| (S (NP (PRP 0)) (VP (MD 0) (VP (VB 0) (S (NP (PRP 0)) (NP (NP (DT 0) (NN 0))))))) |ET|
+-1 |BT| (NP (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0) (NN 0))))))) (ADVP (RB 0))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NNS 0)))) |ET|
+1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (NNS 0)))) (VP (VBP 0) (PP (IN 0) (NP (NP (DT 0)))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (SBAR (WHADVP (WRB 0)) (S (NP (PRP 0)) (VP (VBP 0))))) |ET|
+1 |BT| (S (: 0) (S (VP (VBG 0) (PP (IN 0) (NP (NN 0)))))) |ET|
+-1 |BT| (S (SBAR (S (VP (NP (PP (NP (PP (NP (PP (NP (PP (NP (NN 0) (NN 0) (NN 0))))))))))))) (, 0) (NP (PRP 0))) |ET|
+-1 |BT| (NP (NP (JJ 0) (NN 0)) (SBAR (IN 0))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (S (VP (VBG 0)))))) |ET|
+-1 |BT| (NP (NP (NN 0) (CC 0) (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0)))) |ET|
+1 |BT| (VP (NP (JJ 0) (NNS 0)) (PP (IN 0))) |ET|
+-1 |BT| (NP (CC 0) (NP (NP (NN 0) (JJ 0) (NN 0)) (PP (IN 0)))) |ET|
+-1 |BT| (ADJP (JJ 0) (PP (IN 0) (NP (NP (NN 0) (NN 0)) (NP (DT 0))))) |ET|
+-1 |BT| (VP (NP (PRP 0)) (PP (IN 0) (NP (NP (JJ 0) (NNS 0)) (PP (IN 0))))) |ET|
+1 |BT| (ADJP (JJ 0) (PP (- 0) (NP (NP (JJ 0) (JJ 0) (NN 0))))) |ET|
+-1 |BT| (PP (NP (NP (JJ 0) (NNS 0)) (, 0) (ADVP (RB 0))) (PP (ADVP (DT 0)) (ADJP (JJ 0)))) |ET|
+1 |BT| (NP (DT 0) (JJ 0) (NNS 0)) |ET|
+-1 |BT| (NP (NP (JJ 0) (NN 0)) (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)))))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0)))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0)))) |ET|
+-1 |BT| (S (S (VP (S (VP (VP (VP (NP (NNS 0)))))))) (NP (PRP 0)) (VP (VBD 0) (SBAR (S (NP (DT 0)))))) |ET|
+1 |BT| (S (S (NP (NNS 0)) (VP (VBD 0))) (: 0)) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))) |ET|
+-1 |BT| (NP (NP (NN 0) (NN 0)) (, 0) (NP (JJ 0) (NNS 0) (NN 0))) |ET|
+-1 |BT| (PP (IN 0) (NP (JJ 0) (NN 0))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0))))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0) (NN 0)))))) |ET|
+-1 |BT| (NP (NP (DT 0) (JJ 0)) (PP (VBN 0) (PP (IN 0) (SBAR (WHNP (WDT 0)) (S (NP (NP (NNS 0)))))))) |ET|
+-1 |BT| (VP (PP (NP (NNS 0))) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0)))))) |ET|
+-1 |BT| (NP (PP (NP (PP (NP (JJ 0) (NN 0))))) (NP (JJ 0) (NN 0))) |ET|
+-1 |BT| (S (S (VP (VP (NP (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0))))))))) (. 0)) |ET|
+1 |BT| (S (S (ADJP (VBN 0) (PP (IN 0) (NP (DT 0) (NN 0) (NN 0))))) (, 0)) |ET|
+1 |BT| (VP (NP (RBS 0)) (PP (NP (NN 0)) (IN 0) (NP (DT 0)))) |ET|
+-1 |BT| (S (PP (NP (NNS 0))) (NP (PRP 0)) (VP (VBD 0) (NP (NP (DT 0) (JJ 0))))) |ET|
+-1 |BT| (SBAR (WHNP (WP 0)) (S (VP (VBD 0) (VP (VBN 0))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)))))))) |ET|
+-1 |BT| (VP (VP (NP (JJ 0) (NN 0))) (CC 0) (VP (VB 0) (NP (PRP 0)) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (CD 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+-1 |BT| (S (NP (JJ 0) (NNS 0)) (VP (VBP 0) (NP (NP (DT 0) (JJ 0) (NN 0))))) |ET|
+-1 |BT| (S (VP (SBAR (S (VP (VP (NP (PP (NP (S (VP (VP (VB 0) (PP (IN 0) (NP (PRP 0)))))))))))))) (. 0)) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (S (VP (VP (PP (PP (SBAR (S (VP (VP (VP (PP (S (VP (VP (PP (NP (JJ 0) (NN 0)))))))))))))))) (. 0)) |ET|
+1 |BT| (S (PP (NP (DT 0) (NNS 0))) (, 0)) |ET|
+1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))))) |ET|
+-1 |BT| (VP (VBZ 0) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (VP (SBAR (S (VP (ADVP (PP (IN 0) (ADJP (JJ 0)))))))) (. 0)) |ET|
+-1 |BT| (S (NP (PP (NP (PP (NP (NX (NX (NNS 0)))))))) (VP (MD 0) (VP (VB 0) (PP (IN 0) (NP (NN 0))) (PP (IN 0) (NP (JJ 0)))))) |ET|
+-1 |BT| (PP (IN 0) (NP (NP (PRP$ 0) (JJ 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NNS 0))))) |ET|
+1 |BT| (S (NP (JJ 0)) (VP (- 0) (NP (NP (JJ 0) (ADJP (JJ 0) (- 0)))))) |ET|
+1 |BT| (VP ('' 0) (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (PRP$ 0)))) |ET|
+-1 |BT| (NP (NP (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0))))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (NNS 0)) (PP (TO 0) (NP (NP (NP (DT 0))))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (PRP$ 0) (NNS 0)))))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (S (VP (VBG 0) (PP (IN 0) (NP (PRP$ 0))))))) |ET|
+1 |BT| (S (NP (NN 0)) (VP (MD 0) (RB 0))) |ET|
+-1 |BT| (VP (PP (NP (PP (NP (NP (NNS 0)))))) (SBAR (IN 0) (S (NP (NP (DT 0) (VBG 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)))))))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (SBAR (WHNP (WDT 0)) (S (VP (VBZ 0) (VP (VBN 0) (SBAR (S (NP (DT 0) (NN 0)) (VP (VBZ 0))))))))) |ET|
+-1 |BT| (S (NP (PP (S (VP (VP (NP (PP (NP (NP (NN 0)))))))))) (VP (VP (VBD 0) (ADVP (NP (DT 0) (JJ 0)))))) |ET|
+-1 |BT| (NP (NP (NN 0) (NN 0)) (PP (IN 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (JJ 0))))))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0) (PRP$ 0) (NN 0))))))) |ET|
+-1 |BT| (S (PP (NP (JJ 0) (NN 0))) (NP (JJ 0) (NNS 0)) (VP (VBP 0))) |ET|
+-1 |BT| (VP (VBP 0) (NP (NP (DT 0) (JJ 0) (NNS 0)))) |ET|
+-1 |BT| (S (VP (UCP (PP (NP (PP (NP (NP (PP (S (VP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))))))))))))) (. 0)) |ET|
+-1 |BT| (NP (NP (CD 0)) (PP (IN 0) (NP (PRP$ 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (SBAR (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0))))))) |ET|
+-1 |BT| (S (VP (UCP (PP (NP (PP (IN 0) (NP (PRP 0))))))) (. 0)) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (, 0) (NP (NP (NN 0) (CC 0) (JJ 0)))) |ET|
+-1 |BT| (VP (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0)))) (PP (IN 0) (NP (NP (NN 0)) (, 0)))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))) |ET|
+1 |BT| (S (S (VP (PP (PP (NP (NN 0)))) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (PRP$ 0) (NN 0)))))) (CC 0) (S (NP (DT 0)))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (CC 0) (NP (NP (NN 0) (NN 0)) (PP (IN 0) (NP (NP (JJ 0) (NN 0)))))) |ET|
+-1 |BT| (S (: 0) (S (NP (PRP 0)) (VP (VBZ 0) (NP (NP (DT 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (PP (S (VP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))))))))) (VP (VBD 0) (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0)))))) |ET|
+-1 |BT| (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (DT 0)))) |ET|
+1 |BT| (VP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0)))))) |ET|
+-1 |BT| (S (NP (ADJP (PP (S (VP (NP (CC 0) (NN 0))))))) (VP (VBP 0) (RB 0))) |ET|
+-1 |BT| (S (NP (PP (NP (PP (PP (NP (DT 0) (JJ 0) (NNS 0))))))) (VP (VBZ 0) (RB 0))) |ET|
+-1 |BT| (S (NP (SBAR (S (VP (VP (NP (NP (PP (NP (PP (NP (NN 0))))))) (PP (IN 0) (NP (DT 0) (NN 0) (NN 0)))))))) (VP (VBZ 0) (NP (NP (PRP$ 0))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))) (VP (VBG 0) (PP (IN 0) (NP (DT 0) (NN 0) (NN 0) (NN 0))))) |ET|
+-1 |BT| (S (PP (PP (NP (PP (NP (CD 0) (NN 0) (NN 0)))))) (, 0) (NP (DT 0))) |ET|
+-1 |BT| (SINV (NP (NP (S (VP (VP (VP (PP (NP (PP (NP (DT 0) (JJ 0) (NN 0))))))))))) (. 0)) |ET|
+1 |BT| (S (S (VP (VP (VBD 0)))) (: 0) (S (SBAR (IN 0) (S (NP (CD 0)))))) |ET|
+-1 |BT| (S (VP (VP (SBAR (S (VP (VP (VP (PP (NP (NP (DT 0) (NN 0) (POS 0)) (NNS 0)))))))))) (. 0)) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))))) |ET|
+1 |BT| (X (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (NP (NN 0) (NN 0) (JJ 0) (NNS 0))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (CC 0))) |ET|
+-1 |BT| (VP (VP (NP (PP (NP (NNS 0))))) (CC 0) (VP (VBZ 0) (NP (DT 0)))) |ET|
+1 |BT| (NP (NP (NP (NN 0)) (PP (IN 0) (NP (PRP$ 0)))) (CC 0)) |ET|
+-1 |BT| (NP (NP (NN 0)) (NP (NP (DT 0) (JJ 0) (NN 0)) (NP (DT 0) (JJ 0)))) |ET|
+1 |BT| (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))) |ET|
+-1 |BT| (S (S (VP (NP (PP (NP (JJ 0) (NN 0) (NN 0)))))) (CC 0) (S (NP (NP (DT 0) (NNS 0))))) |ET|
+1 |BT| (VP (VP (PP (NP (NNS 0)))) (CC 0) (VP (VBG 0))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (VP (: 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0))))) |ET|
+1 |BT| (VP (NP (PP (IN 0) (NP (NN 0)))) (FRAG (X (NP (NP (NNS 0)) (NP (NNS 0))) (NP (NNS 0)) (NP (NP (NNS 0)) (, 0) (NP (JJ 0) (NNS 0)))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (VP (PP (NP (DT 0) (NN 0))) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0)))))) |ET|
+-1 |BT| (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (DT 0))) ('' 0) (NP (NP (NN 0) (NN 0)))) |ET|
+1 |BT| (S (NP (VP (VP (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0))))) (CC 0) (VP (VBZ 0)))) (VP (ADVP (RB 0)))) |ET|
+-1 |BT| (S (VP (ADVP (RB 0) (RB 0) (RB 0))) (. 0)) |ET|
+-1 |BT| (NP (SBAR (S (VP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))))))) (PP (JJ 0))) |ET|
+-1 |BT| (VP (VBZ 0) (ADVP (RB 0)) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0))))) |ET|
+-1 |BT| (NP (S (VP (VP (NP (NN 0))))) (, 0) (NP (NP (JJ 0) (NN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (PP (PP (NP (- 0) (JJ 0) (NN 0))) (CC 0) (PP (IN 0) (NP (NP (NN 0) (NN 0))))) |ET|
+1 |BT| (S (NP (PP (NP (JJ 0) (NN 0) (NN 0) (NNS 0)))) (VP (VBP 0) (S (VP (VBG 0) (NP (JJ 0) (NN 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (DT 0) (JJ 0) (JJ 0) (NN 0)))) (VP (VBZ 0))) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (JJ 0) (JJ 0) (NN 0) (NN 0))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (NP (, 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0)))))) |ET|
+-1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0) (NN 0))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (S (NP (PRP 0)) (VP (VBG 0))))) |ET|
+1 |BT| (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NNS 0))))) |ET|
+-1 |BT| (S (NP (PP (NP (NN 0))) (S (VP (TO 0) (VP (VB 0))))) (VP (MD 0))) |ET|
+-1 |BT| (NP (NP (NN 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (JJ 0) (- 0) (JJ 0))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (JJ 0) (NN 0) (NN 0)) (PP (IN 0))) |ET|
+-1 |BT| (S (S (PP (NP (NP (POS 0)) (JJ 0) (NNS 0))) (NP (DT 0) (NN 0)) (VP (VBD 0))) (: 0) (S (NP (PRP 0)))) |ET|
+-1 |BT| (S (S (VP (NP (PP (NP (NN 0) (NN 0)))))) (CC 0) (S (NP (NP (DT 0) (NNS 0))))) |ET|
+-1 |BT| (VP (VB 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)))) |ET|
+-1 |BT| (VP (PP (NP (PP (NP (NNS 0) (NN 0) (NN 0) (NN 0))))) (PP (IN 0) (ADJP (JJ 0)))) |ET|
+-1 |BT| (S (VP (NP (VP (S (VP (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (- 0) (JJ 0) (NN 0))))))))) (. 0)) |ET|
+-1 |BT| (S (PP (PP (NP (SBAR (S (VP (VP (VP (PP (NP (NNS 0))))))))))) (, 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) (VP (MD 0))) |ET|
+-1 |BT| (VP (VBZ 0) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (NP (JJ 0) (NN 0)) (PP (IN 0) (NP (NN 0)))) (CC 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (VP (VBN 0) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))))) (VP (VBZ 0))) |ET|
+-1 |BT| (S (VP (VP (NP (PP (NP (PRP$ 0) (NN 0) (CC 0) (NN 0)))))) (. 0)) |ET|
+-1 |BT| (S (NP (JJ 0) (NNS 0)) (VP (VBP 0))) |ET|
+1 |BT| (VP (VB 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NNS 0)))) (PP (PP (TO 0)))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (S (NP (SBAR (SBAR (S (VP (SBAR (S (VP (ADJP (PP (NP (NP (DT 0) (NN 0))))))))))))) (VP (MD 0) (VP (VB 0) (NP (NP (DT 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (JJ 0) (NN 0)))) (VP (VBZ 0) (ADVP (RB 0)))) |ET|
+-1 |BT| (S (S (VP (SBAR (S (VP (VP (VP (PP (NP (PP (NP (NNS 0)))))))))))) (CC 0) (S (NP (DT 0) (NN 0)) (VP (VBD 0) (NP (NN 0))))) |ET|
+1 |BT| (NP (NP (PP (IN 0) (VP ('' 0) (NP (NN 0))))) (NP (NN 0))) |ET|
+1 |BT| (S (S (VP (NP (PP (NP (NP (JJ 0)) (PP (IN 0) (NP (NN 0)))))))) (CC 0) (S (S (VP (VBG 0) (PP (IN 0) (S (VP (VBG 0)))))))) |ET|
+-1 |BT| (S (SBAR (S (VP (PP (PP (NP (PP (IN 0) (NP (JJ 0) (NN 0))))))))) (, 0) (NP (NN 0)) (VP (MD 0))) |ET|
+-1 |BT| (VP (NP (NN 0)) (PP (IN 0) (PP (IN 0)))) |ET|
+1 |BT| (S (NP (PP (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NN 0)))))) (VP (VP (VBD 0)))) |ET|
+1 |BT| (S (NP (NN 0)) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0)))))) |ET|
+1 |BT| (NP (NP (ADJP (PP (NP (NP (NNS 0)) (ADJP (JJ 0) (- 0) (JJ 0)))))) (ADJP (JJ 0) (- 0) (JJ 0))) |ET|
+-1 |BT| (S (VP (VP (VP (PP (NP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))))))) (. 0)) |ET|
+1 |BT| (S (NP (PRP 0)) (VP (VBD 0) (: 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (NP (DT 0) (NN 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (CC 0) (JJ 0) (NN 0)) |ET|
+1 |BT| (NP (NP (FW 0) (FW 0) (NN 0) (NN 0)) (PP (IN 0) (S (VP (VBG 0))))) |ET|
+-1 |BT| (S (S (VP (VP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (ADVP (RB 0) (RB 0))))) (. 0)) |ET|
+-1 |BT| (S (S (VP (VBD 0))) (: 0) (S (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))) (VP (VBZ 0) (ADVP (RB 0))))) |ET|
+1 |BT| (NP (JJ 0) (NN 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (VP (ADVP (DT 0) (NN 0)) (NP (NP (PRP$ 0) (NNS 0)) (PP (VBG 0) (NP (NNS 0))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0))))))))) |ET|
+-1 |BT| (SBAR (IN 0) (S (NP (NN 0)) (VP (VBN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (NP (JJ 0) (NN 0) (NN 0)) |ET|
+1 |BT| (S (S (VP (CC 0) (VP (VBD 0)))) (: 0)) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0)))) |ET|
+-1 |BT| (VP (VBZ 0) (SBAR (S (NP (PRP 0)) (VP (VBZ 0) (PP (IN 0) (NP (NP (PRP 0)) (CC 0) (NP (NP (NP (PRP$ 0)))))))))) |ET|
+1 |BT| (VP (NP (PP (NP (NNS 0)))) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (S (S (VP (NP (NP (NN 0)) (PP (IN 0) (NP (PRP 0)))))) (, 0) (S (NP (PRP 0)) (VP (MD 0)))) |ET|
+-1 |BT| (S (NP (PP (NP (DT 0) (NN 0)))) (VP (MD 0))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NNS 0)) (PP (IN 0) (NP (DT 0) (NN 0) (NN 0)))) |ET|
+1 |BT| (S (VP (VP (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (NNS 0))))))) (. 0)) |ET|
+-1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))) (VP (VBZ 0) (ADVP (RB 0)) (NP (NP (DT 0) (NN 0)) (PP (IN 0))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+-1 |BT| (VP (NP (NP (NNS 0)) (PP (IN 0) (NP (PRP$ 0) (NNS 0)))) (PP (JJR 0) (IN 0) (NP (NP (DT 0)) (CC 0)))) |ET|
+1 |BT| (NP (NP (QP (CD 0)) (NNS 0)) (PP (IN 0) (NP (DT 0)))) |ET|
+1 |BT| (S (NP (DT 0) (JJ 0) (NN 0) (CC 0) (NN 0) (NN 0)) (VP (VBD 0))) |ET|
+-1 |BT| (S (NP (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (NN 0)))))) (VP (VBZ 0) (PP (IN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (JJ 0) (NNS 0))) |ET|
+-1 |BT| (S (S (VP (VP (NP (PP (NP (JJ 0) (NN 0))))))) (CC 0) (S (PP (IN 0) (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0) (NN 0))))) (NP (EX 0)) (VP (VBP 0))) |ET|
+-1 |BT| (NP (NP (NN 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0))))) |ET|
+1 |BT| (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (NP (NNS 0))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+1 |BT| (S (PP (PP (NP (PP (NP (PP (NP (PP (NP (DT 0) (CD 0) (NNS 0)))))))))) (, 0)) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0))) |ET|
+1 |BT| (VP (: 0) (PP (IN 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (VP (ADVP (JJR 0) (IN 0)) (VBG 0) (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (ADJP (JJ 0) (PP (- 0) (NP (NP (JJ 0) (JJ 0) (NN 0))))) |ET|
+-1 |BT| (S (S (S (VP (VP (PP (NP (NP (JJ 0) (NN 0)))))))) (. 0)) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0) (S (VP (TO 0) (VP (VB 0))))))) |ET|
+1 |BT| (S (S (ADJP (PP (PP (NP (PP (IN 0) (NP (DT 0) (NN 0) (NN 0)))))))) (, 0) (NP (DT 0))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NNS 0)))) |ET|
+1 |BT| (S (: 0) (S (NP (DT 0) (NN 0)) (VP (MD 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0)))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0) (NN 0)))) |ET|
+-1 |BT| (NP (JJ 0) (ADJP (JJ 0) (PP (TO 0) (NP (DT 0) (JJ 0) (- 0)))) (JJ 0)) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (NP (NP (CC 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) (VP (VBZ 0))) |ET|
+1 |BT| (S (VP (PP (NP (NP (UCP (SBAR (S (VP (VBP 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (DT 0) (NN 0)))))))))))) (. 0)) |ET|
+-1 |BT| (S (S (VP (S (VP (NP (SBAR (S (VP (PP (NP (NP (NN 0)))))))))))) (CC 0) (S (NP (PRP 0)) (VP (MD 0)))) |ET|
+-1 |BT| (VP (VP (VP (NP (JJ 0) (NNS 0)))) (CC 0) (VP (VBP 0))) |ET|
+-1 |BT| (S (NP (DT 0) (JJ 0) (NN 0)) (VP (VBN 0) (NP (NP (DT 0) (VBG 0))))) |ET|
+1 |BT| (NP (JJ 0) (NN 0) (CC 0) (NN 0)) |ET|
+-1 |BT| (S (S (VP (PP (S (VP (NP (NP (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0))))))))) (VP (VBD 0) (ADJP (JJ 0)) (PP (IN 0)))) |ET|
+1 |BT| (NP (NP (NN 0) (NN 0) (NN 0) (- 0)) (NN 0) (NN 0)) |ET|
+-1 |BT| (S (VP (SBAR (S (VP (VP (NP (PP (NP (VP (PP (PP (NP (PP (NP (SBAR (S (VP (PP (NP (VP (PP (NP (PP (NP (JJ 0) (- 0) (JJ 0) (NN 0))))))))))))))))))))))))) (. 0)) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0))))) |ET|
+1 |BT| (NP (ADJP (JJ 0)) (NN 0) (SBAR (WHNP (WDT 0)))) |ET|
+-1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (ADJP (JJ 0))))) |ET|
+-1 |BT| (VP (VBP 0) (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (VP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (JJ 0) (NNS 0))))) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (JJ 0))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0) (NN 0) (NN 0))))) |ET|
+-1 |BT| (S (VP (VP (PP (NP (PP (NP (PP (NP (NN 0) (NN 0) (NN 0))))))))) (. 0)) |ET|
+1 |BT| (NP (NP (DT 0) (NNS 0)) (PP (IN 0))) |ET|
+-1 |BT| (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)))) |ET|
+1 |BT| (S (NP (NP (PP (S (VP (PP (NP (NN 0)))))))) (VP (VBD 0) (ADVP (RBR 0)) (NP (DT 0)) (SBAR (IN 0) (S (NP (PRP 0)))))) |ET|
+1 |BT| (VP (NP (JJ 0) (NNS 0)) (PP (IN 0))) |ET|
+-1 |BT| (VP (VP (NP (NP (NNS 0)) (PP (IN 0) (NP (JJ 0) (NNS 0))))) (CC 0)) |ET|
+-1 |BT| (S (NP (NN 0)) (VP (VBZ 0) (ADJP (JJ 0)))) |ET|
+1 |BT| (S (NP (PP (NP (NN 0) (NN 0) (NN 0)))) (VP (VBP 0) (S (VP (VBG 0))))) |ET|
+1 |BT| (S (: 0) (S (NP (NP (NN 0)) (PP (IN 0) (NP (NP (JJ 0) (JJ 0) (NN 0)) (CC 0)))))) |ET|
+1 |BT| (VP (VB 0) (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (VP (VBZ 0) (NP (NP (DT 0) (NN 0)) (SBAR (WHNP (WDT 0)))))) |ET|
+1 |BT| (VP (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0) (CC 0) (NNS 0))))) (S (VP (TO 0)))) |ET|
+-1 |BT| (VP (NP (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NNS 0))))) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (S (VP (S (VP (VP (NP (SBAR (S (VP (VP (S (VP (VP (PP (NP (DT 0) (JJ 0) (NN 0) (NN 0))))))))))))))) (. 0)) |ET|
+-1 |BT| (SBAR (IN 0) (S (NP (NN 0)) (VP (VBZ 0) (VP (VBN 0))))) |ET|
+1 |BT| (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (NNS 0))) |ET|
+-1 |BT| (NP (PP (NP (PP (IN 0) (NP (NN 0))))) (SBAR (WHNP (WDT 0)) (S (VP (VBD 0) (VP (VBN 0) (PP (IN 0))))))) |ET|
+-1 |BT| (S (S (VP (PP (NP (PP (NP (PP (NP (PP (NP (JJ 0) (NNS 0))))))))))) (, 0) (NP (NN 0) (NN 0)) (VP (VBD 0))) |ET|
+1 |BT| (S (PP (NP (PP (NP (NN 0))))) (, 0) (NP (JJ 0) (JJ 0) (NNS 0))) |ET|
+1 |BT| (VP (PP (NP (DT 0) (JJ 0) (NN 0))) (SBAR (IN 0) (S (VP (VBG 0) (NP (DT 0)))))) |ET|
+1 |BT| (S (, 0) (NP (NP (DT 0) (NN 0) (NN 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (NP (NN 0) (CC 0) (NN 0)) |ET|
+-1 |BT| (VP (NP (PRP 0)) (SBAR (S (NP (PRP 0)) (VP (VBD 0))))) |ET|
+-1 |BT| (VP (PP (NP (NN 0) (NN 0))) (NP (JJ 0))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0))))))) |ET|
+-1 |BT| (VP (NP (PP (NP (NNS 0)))) (PP (TO 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (NNS 0)))))) |ET|
+-1 |BT| (NP (PP (S (VP (PP (NP (PP (NP (NN 0) (NN 0)))))))) (. 0)) |ET|
+-1 |BT| (S (VP (SBAR (S (VP (PP (NP (DT 0) (JJ 0) (NN 0))))))) (. 0)) |ET|
+1 |BT| (VP (PP (NP (NP (NN 0) (NNS 0)) (PP (IN 0) (NP (NN 0))))) (PP (TO 0))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0) (NNS 0)))) |ET|
+1 |BT| (NP (ADJP (PP (NP (NNS 0)))) (JJ 0) (NN 0)) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (JJ 0))))) |ET|
+-1 |BT| (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0)))) (VP (MD 0))) |ET|
+-1 |BT| (VP (RB 0) (VP (VB 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (VP (VB 0) (VP (VBN 0) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (NP (NP (ADJP (- 0) (JJ 0)) (NN 0)) (PP (ADVP (JJ 0)) (IN 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (NP (NNS 0) (NN 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0) (CC 0) (JJ 0) (NN 0)))) (VP (VP (VBD 0)))) |ET|
+-1 |BT| (VP (ADVP (PP (NP (NN 0)))) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NNS 0))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (VP (NP (NN 0)) (PP (IN 0) (S (VP (VBG 0) (NP (NP (DT 0) (NN 0))))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))))) |ET|
+1 |BT| (VP (VBG 0) (NP (NP (DT 0) (NN 0)) (CC 0))) |ET|
+-1 |BT| (S (VP (NP (PP (NP (PP (NP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (JJ 0) (NN 0))))))))))))) (. 0)) |ET|
+-1 |BT| (S (VP (NP (PP (S (VP (PP (NP (NP (NN 0) (POS 0)) (NN 0) (S (VP (TO 0) (VP (VB 0))))))))))) (. 0)) |ET|
+-1 |BT| (S (NP (DT 0) (NNS 0)) (VP (VBP 0) (ADVP (RB 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NN 0) (CC 0)))) |ET|
+-1 |BT| (S (NP (PP (NP (NN 0) (NN 0) (NNS 0)))) (VP (VBP 0) (S (VP (VBG 0) (NP (JJ 0) (NN 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (NN 0)))) (VP (VP (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0)))))))) |ET|
+-1 |BT| (S (VP (ADJP (PP (NP (PP (S (VP (VP (NP (SBAR (S (NP (PP (NP (PRP$ 0)))) (VP (VBD 0) (VP (VBN 0)))))))))))))) (. 0)) |ET|
+1 |BT| (S (S (VP (VP (VBD 0)))) (: 0) (S (PP (IN 0) (NP (DT 0) (NN 0))) (S (NP (NP (DT 0) (NN 0)))))) |ET|
+-1 |BT| (PP (IN 0) (NP (NP (DT 0) (JJ 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0))))))) |ET|
+1 |BT| (VP (VBZ 0) (SBAR (IN 0) (S (NP (NP (DT 0)))))) |ET|
+-1 |BT| (NP (NP (JJ 0) (NN 0) (NN 0)) (PP (IN 0))) |ET|
+1 |BT| (VP (VP (PP (NP (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0)))))))) (CC 0) (VP (ADJP (ADJP (JJ 0) (NN 0))))) |ET|
+-1 |BT| (VP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))) (PP (IN 0) (NP (NP (NP (JJ 0) (NN 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (NP (SBAR (S (VP (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NN 0))))))))))) (VP (MD 0) (VP (VB 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0) (PRP$ 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (VBG 0)))))) |ET|
+-1 |BT| (S (S (VP (SBAR (S (VP (PP (NP (JJ 0) (JJ 0) (NNS 0)))))))) (CC 0) (S (NP (PRP 0)))) |ET|
+-1 |BT| (VP (VBZ 0) (ADVP (RB 0)) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (PP (NP (PP (NP (PP (NP (NN 0)))))))))) (VP (MD 0) (VP (VB 0) (VP (VBN 0) (PP (IN 0) (NP (DT 0) (JJ 0))))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+1 |BT| (S (NP (PP (SBAR (S (VP (VP (NP (CD 0)))))))) (VP (MD 0) (VP (VB 0)))) |ET|
+-1 |BT| (S (NP (PP (NP (DT 0) (NN 0)))) (VP (VBZ 0) (S (VP (VP (TO 0) (VP (VB 0) (NP (NP (DT 0) (NNS 0))))))))) |ET|
+1 |BT| (NP (NP (JJ 0) (NN 0)) (PP (IN 0))) |ET|
+-1 |BT| (VP (NP (PP (NP (NN 0)))) (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0))))))) |ET|
+1 |BT| (PP (TO 0) (NP (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (S (NP (JJ 0)) (VP (VBP 0) (PP (IN 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NP (NN 0) (POS 0)) (JJ 0) (NN 0)) (CC 0)))) |ET|
+-1 |BT| (VP (VB 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NNS 0))))))) |ET|
+1 |BT| (S (S (VP (VBD 0))) (: 0) (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0))))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (NP (PRP 0)) (NN 0)))) |ET|
+1 |BT| (NP (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0)))))) |ET|
+-1 |BT| (S (S (NP (PP (NP (NN 0)))) (VP (VBN 0) (PP (IN 0) (NP (DT 0) (NN 0))))) (IN 0)) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (NP (PRP 0)) (NN 0) (NN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (CD 0))))) |ET|
+1 |BT| (S (NP (NN 0)) (VP (VBZ 0) (ADJP (JJ 0)))) |ET|
+1 |BT| (VP (PP (CC 0) (PP (IN 0) (NP (DT 0) (NN 0)))) (NP (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (DT 0))))) |ET|
+1 |BT| (VP (PP (NP (PP (NP (NN 0))))) (PP (IN 0) (NP (NP (NNS 0))))) |ET|
+-1 |BT| (VP (NP (JJ 0) (NN 0) (NN 0)) (PP (TO 0) (NP (NP (DT 0))))) |ET|
+-1 |BT| (S (VP (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))))) (. 0)) |ET|
+-1 |BT| (S (S (VP (PP (NP (PRP 0))))) (CC 0) (S (NP (PRP 0)) (VP (VBZ 0)))) |ET|
+1 |BT| (VP (PP (IN 0) (NP (NN 0))) (S (VP (TO 0)))) |ET|
+-1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (NN 0)))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (S (VP (VBG 0))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NP (NP (DT 0) (NN 0))))))))))) |ET|
+1 |BT| (NP (NP (NN 0) (POS 0)) (ADJP (JJ 0) (PP (- 0) (NP (NP (JJ 0) (JJ 0) (NN 0)))))) |ET|
+-1 |BT| (S (NP (NN 0)) (VP (TO 0) (VP (VB 0) (NP (NN 0)) (PP (TO 0) (NP (NP (DT 0))))))) |ET|
+-1 |BT| (VP (NP (PP (NP (PP (NP (NP (POS 0)) (NN 0) (NNS 0)))))) (PP (IN 0) (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (VP (VBG 0) (S (VP (TO 0) (VP (VB 0) (S (NP (POS 0))) (NP (DT 0) (NN 0)))))) |ET|
+-1 |BT| (NP (, 0) (NP (NN 0) (NN 0) (NN 0))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (PRP 0)))) |ET|
+-1 |BT| (S (NP (SBAR (S (NP (DT 0)) (VP (VBZ 0)))) (PP (IN 0) (NP (NN 0) (NN 0)))) (VP (MD 0) (VP (VB 0) (NP (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (S (S (VP (VP (PP (NP (PP (NP (JJ 0) (NN 0)))))))) (. 0)) |ET|
+1 |BT| (PP (TO 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0)))) |ET|
+-1 |BT| (NP (NP (DT 0) (NN 0)) (CC 0)) |ET|
+-1 |BT| (S (S (NP (NN 0)) (VP (VBD 0))) (: 0) (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NNS 0))))))) |ET|
+1 |BT| (VP (PP (NP (PP (NP (DT 0) (JJ 0) (NNS 0))))) (PP (TO 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (PRP$ 0)))))) |ET|
+-1 |BT| (S (VP (VP (NP (PP (NP (JJ 0) (NNS 0)))) (PP (IN 0) (NP (DT 0) (NN 0))))) (. 0)) |ET|
+1 |BT| (NP (NP (JJ 0) (NN 0)) (SBAR (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)))))))) |ET|
+-1 |BT| (NP (NP (NP (PP (NP (PP (NP (PP (NP (NNS 0))))))) (POS 0)) (NN 0)) (PP (IN 0) (NP (JJ 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+-1 |BT| (VP (TO 0) (VP (VB 0) (S (NP (POS 0)) (VP (NN 0) (PP (IN 0) (NP (DT 0) (JJ 0))))))) |ET|
+1 |BT| (VP (VBG 0) (NP (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NNS 0)) (PP (IN 0))))))) |ET|
+1 |BT| (NP (NP (CC 0) (NNS 0)) (PP (IN 0) (NP (NP (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (S (PP (IN 0) (NP (DT 0) (JJ 0) (NNS 0))) (NP (EX 0)) (VP (VBZ 0) (NP (JJ 0)))) |ET|
+-1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) (VP (VBZ 0) (ADVP (RBR 0) (IN 0)))) |ET|
+1 |BT| (ADJP (JJ 0) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))))) |ET|
+1 |BT| (VP (PP (NP (VP (NP (JJ 0) (JJ 0) (NN 0))))) (NP (NP (NN 0)))) |ET|
+-1 |BT| (S (VP (VP (PP (S (VP (S (VP (PP (- 0) (NP (JJ 0) (JJ 0) (NNS 0)))))))))) (. 0)) |ET|
+1 |BT| (S (PP (NP (DT 0) (NN 0))) (PRN (, 0))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0)))))) |ET|
+1 |BT| (NP (DT 0) (JJ 0) (NN 0)) |ET|
+-1 |BT| (S (NP (NN 0) (NN 0)) (VP (VBD 0))) |ET|
+-1 |BT| (NP (ADJP (CC 0) (JJ 0)) (NN 0)) |ET|
+-1 |BT| (VP (VBZ 0) (PP (IN 0) (NP (NP (NN 0))))) |ET|
+1 |BT| (NP (NP (JJ 0) (CC 0) (JJ 0) (NN 0)) (PP (IN 0))) |ET|
+-1 |BT| (S (NP (PRP 0)) (ADVP (RB 0)) (VP (VBD 0))) |ET|
+1 |BT| (VP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))) (, 0)) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (JJ 0) (NN 0) (NN 0) (NN 0)))) |ET|
+-1 |BT| (S (NP (PP (IN 0) (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (NN 0)))))) (VP (VBZ 0))) |ET|
+1 |BT| (S (PP (NP (DT 0) (NN 0))) (NP (NN 0))) |ET|
+-1 |BT| (NP (NP (DT 0) (VBG 0) (NN 0)) (CC 0) (NP (NP (DT 0)))) |ET|
+-1 |BT| (S (NP (PP (NP (NN 0)))) (VP (VBZ 0) (NP (NP (DT 0) (NNS 0)) (VP (VBG 0))))) |ET|
+-1 |BT| (S (S (VP (NP (PP (NP (NN 0)))))) (VP (MD 0) (VP (VB 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (VP (VBN 0) (: 0))) |ET|
+1 |BT| (S (NP (DT 0) (NN 0)) (VP (VBD 0))) |ET|
+-1 |BT| (S (NP (NNS 0)) (VP (MD 0) (VP (VB 0)))) |ET|
+1 |BT| (NP (DT 0) (JJ 0) (CD 0) (NNS 0)) |ET|
+-1 |BT| (S (NP (PP (NP (NN 0)))) (VP (VBD 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0))))))) |ET|
+-1 |BT| (S (NP (NN 0)) (VP (MD 0) (VP (VB 0) (ADJP (JJ 0))))) |ET|
+1 |BT| (SINV (VP (NP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0)))))) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (NN 0)))))) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (NN 0))) |ET|
+-1 |BT| (S (: 0) (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NP (NN 0) (POS 0)))))))) |ET|
+-1 |BT| (NP (PP (NP (NN 0) (NN 0) (NN 0))) (S (VP (TO 0)))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (JJ 0) (NNS 0))))))) |ET|
+-1 |BT| (S (NP (NN 0)) (VP (MD 0) (VP (VB 0)))) |ET|
+-1 |BT| (S (S (NP (NP (SBAR (S (VP (VP (PP (NP (PP (NP (NN 0)))))))))) (, 0)) (VP (VBD 0))) (: 0) (S (NP (DT 0)))) |ET|
+-1 |BT| (S (S (VP (SBAR (S (VP (VP (NP (NP (NP (JJ 0) (NNS 0)))))))))) (CC 0) (S (NP (DT 0) (CD 0)))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (TO 0)))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0))))) |ET|
+-1 |BT| (NP (NP (NN 0) (NN 0)) (NP (DT 0) (NN 0))) |ET|
+-1 |BT| (S (VP (VP (PP (NP (NP (SBAR (S (VP (SBAR (S (VP (PP (S (VP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (NN 0))))))))))))))))) (. 0)) |ET|
+-1 |BT| (S (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (NN 0))))) (NP (NN 0)) (VP (VBD 0) (SBAR (S (NP (JJ 0)))))) |ET|
+-1 |BT| (NP (NN 0) (JJ 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NP (ADJP (JJR 0)) (NNS 0)) (PP (IN 0))) |ET|
+1 |BT| (VP (NP (DT 0) (NNS 0)) (PP (TO 0) (NP (DT 0)))) |ET|
+1 |BT| (NP (NP (PP (NP (NNS 0)))) (CC 0) (NP (NP (DT 0) (JJ 0) (NNS 0)) (PP (IN 0) (NP (CD 0))))) |ET|
+-1 |BT| (S (VP (VP (SBAR (S (VP (VP (VP (PP (NP (NN 0) (NN 0)))))))))) (. 0)) |ET|
+-1 |BT| (PP (IN 0) (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NP (JJ 0)))))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (NN 0) (NNS 0)) (PP (IN 0) (NP (DT 0) (NN 0)))))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (S (VP (VBG 0) (NP (DT 0) (ADJP (JJ 0))))))) |ET|
+-1 |BT| (S (NP (DT 0) (NNS 0)) (VP (VBP 0) (VP (VBN 0) (NP (NP (JJ 0) (DT 0)))))) |ET|
+-1 |BT| (S (NP (PP (NP (PP (NP (PP (NP (PP (NP (CD 0) (NNS 0)))))))))) (VP (MD 0) (VP (VB 0)))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (S (S (VP (NP (NP (POS 0)) (NN 0) (JJ 0) (NN 0)))) (CC 0) (S (NP (PRP 0)))) |ET|
+-1 |BT| (ADJP (JJ 0) (, 0)) |ET|
+1 |BT| (S (NP (PP (IN 0) (NP (DT 0) (NNS 0)))) (, 0) (PP (IN 0) (NP (PRP$ 0)))) |ET|
+-1 |BT| (S (S (VP (PP (NP (JJ 0) (CD 0) (NNS 0))))) (NP (DT 0) (NN 0) (CC 0) (JJ 0))) |ET|
+1 |BT| (NP (NP (JJ 0) (NN 0)) (CC 0) (NP (NN 0))) |ET|
+1 |BT| (SINV (VP (S (NP (PP (NP (PP (NP (PP (NP (NP (NN 0)) (ADVP (RB 0))))))))))) (VP (VBD 0) (: 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)))))) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (NN 0))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (RB 0) (CD 0)))) |ET|
+1 |BT| (NP (DT 0) (JJ 0) (JJ 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NP (NN 0)) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)))))) |ET|
+1 |BT| (NP (DT 0) (JJ 0) (NN 0)) |ET|
+-1 |BT| (VP (ADJP (PP (NP (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (PRP$ 0) (NN 0))))))) (NP (DT 0))) |ET|
+1 |BT| (VP (VB 0) (`` 0) (NP (NN 0) (NN 0)) (S (VP (TO 0)))) |ET|
+-1 |BT| (S (NP (PP (IN 0) (NP (JJ 0) (NN 0) (NN 0) (NNS 0)))) (VP (VBP 0))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0))) |ET|
+-1 |BT| (PP (TO 0) (NP (NP (DT 0) (NNS 0)) (PP (IN 0) (NP (NN 0))) (SBAR (WHNP (WDT 0))))) |ET|
+1 |BT| (VP (NP (PP (NP (PP (NP (PP (NP (NN 0)))))))) (PP (IN 0) (NP (NN 0)))) |ET|
+-1 |BT| (SINV (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0) (NN 0) (NN 0))))) (VP (VBD 0))) |ET|
+1 |BT| (VP (PP (PP (NP (PP (NP (PP (NP (PP (NP (PP (NP (NN 0)))))))))))) (, 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (SBAR (S (NP (NP (CD 0)))))))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (NN 0) (CC 0) (NN 0)) (PP (IN 0)))) |ET|
+-1 |BT| (S (VP (VP (UCP (S (VP (SBAR (S (VP (NP (NP (PRP$ 0) (NNS 0)) (PP (VBG 0) (NP (PRP$ 0) (NNS 0)))))))))))) (. 0)) |ET|
+1 |BT| (S (S (VP (VP (SBAR (S (VP (VBZ 0) (VP (VBG 0)))))))) (CC 0)) |ET|
+-1 |BT| (S (NP (PP (NP (NNS 0)))) (VP (VBZ 0) (ADVP (RB 0)) (NP (NP (DT 0) (NN 0))))) |ET|
+1 |BT| (NP (NP (JJ 0) (NNS 0)) (PP (IN 0) (NP (PRP$ 0)))) |ET|
+-1 |BT| (ADJP (JJ 0) (PP (IN 0) (NP (DT 0)))) |ET|
+-1 |BT| (VP (VBP 0) (NP (NP (DT 0) (NN 0)))) |ET|
+1 |BT| (S (NP (PRP 0)) (VP (MD 0) (VP (VB 0) (VP (VP (VBN 0)))))) |ET|
+1 |BT| (PP (IN 0) (NP (NP (DT 0) (NNS 0)))) |ET|
+1 |BT| (VP (PP (NP (PP (NP (PP (NP (PP (NP (PP (IN 0) (NP (NN 0))))))))))) (PP (IN 0))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (, 0) (NP (NN 0)) (, 0) (NP (NNS 0))) |ET|
+1 |BT| (NP (DT 0) (JJ 0) (JJ 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NP (JJ 0) (- 0)) (VP (VBN 0))) |ET|
+-1 |BT| (S (S (PP (NP (NP (POS 0)) (JJ 0) (NNS 0))) (NP (DT 0) (NN 0)) (VP (VBD 0))) (: 0) (S (NP (PRP 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0) (NNS 0)))) |ET|
+-1 |BT| (VP (NP (PRP 0)) (PP (PP (IN 0) (NP (PRP 0))))) |ET|
+1 |BT| (VP (NP (DT 0) (NNS 0)) (PP (TO 0) (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NNS 0)))) |ET|
+-1 |BT| (S (PP (NP (DT 0) (NN 0))) (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0))))))) |ET|
+1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NNS 0)))) |ET|
+1 |BT| (VP (NP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))))) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (VP (NP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (JJ 0) (NNS 0)))))) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (PP (NP (DT 0) (NN 0))) (S (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (JJ 0))))))) |ET|
+1 |BT| (VP (PP (NP (PP (IN 0) (NP (PRP 0))))) (, 0)) |ET|
+-1 |BT| (NP (NP (NN 0) (NN 0) (NN 0) (NN 0)) (NP (PRP$ 0) (NNS 0) (CC 0))) |ET|
+-1 |BT| (S (PP (NP (NN 0))) (NP (DT 0) (CD 0) (NNS 0)) (VP (VBP 0))) |ET|
+-1 |BT| (NP (NP (NN 0) (NN 0) (NN 0)) (NP (DT 0) (NN 0) (NN 0))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (IN 0) (SBAR (WHNP (WP 0)) (S (S (NP (NP (NN 0) (POS 0)) (JJ 0) (NN 0))))))) |ET|
+1 |BT| (NP (NP (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (VP (VBN 0) (PP (PP (IN 0))))))) |ET|
+-1 |BT| (S (VP (VP (NP (PP (NP (DT 0) (NN 0)))) (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0) (NNS 0)))) (PP (IN 0) (NP (DT 0) (NN 0))))) (. 0)) |ET|
+-1 |BT| (VP (VBP 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (NN 0)))) (FRAG (X (NP (NP (NNS 0)) (NP (NNS 0)))))) |ET|
+-1 |BT| (VP (ADVP (NNS 0)) (VP (VBP 0) (RB 0) (ADJP (JJ 0) (PP (IN 0) (NP (DT 0) (NN 0)))))) |ET|
+1 |BT| (S (PP (PP (NP (ADJP (JJ 0))))) (, 0) (NP (NP (UCP (NN 0))))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0) (JJ 0)))))) |ET|
+1 |BT| (NP (NP (NP (NNS 0)) (PP (IN 0) (NP (DT 0) (JJ 0) (NN 0)))) (, 0)) |ET|
+1 |BT| (PP (IN 0) (NP (DT 0) (JJ 0) (JJ 0))) |ET|
+1 |BT| (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0))))) |ET|
+1 |BT| (NP (NNS 0) (NN 0) (NN 0)) |ET|
+1 |BT| (NP (NNS 0) (S (VP (TO 0) (VP (VB 0))))) |ET|
+-1 |BT| (S (S (VP (NP (PP (NP (NN 0)))))) (CC 0) (S (NP (DT 0) (JJ 0) (NNS 0)))) |ET|
+-1 |BT| (VP (VBN 0) (PP (IN 0) (NP (NP (DT 0) (NN 0) (NN 0)) (PP (IN 0))))) |ET|
+-1 |BT| (VP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))) (SBAR (IN 0))) |ET|
+-1 |BT| (NP (NP (NP (POS 0)) (NN 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0))))) |ET|
+1 |BT| (NP (NP (PP (NP (NNS 0)))) (CC 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0)))))))) |ET|
+-1 |BT| (S (, 0) (NP (NP (DT 0) (NN 0) (NN 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (POS 0)) (JJ 0))))) |ET|
+-1 |BT| (S (VP (PP (NP (PP (NP (PP (NP (PP (IN 0) (NP (DT 0) (NNS 0)))))))))) (. 0)) |ET|
+1 |BT| (S (PP (NP (DT 0) (JJ 0) (NN 0))) (, 0) (NP (NP (DT 0) (JJ 0)))) |ET|
+1 |BT| (NP (, 0) (NP (NN 0) (NN 0)) (CC 0)) |ET|
+1 |BT| (S (NP (NNS 0)) (VP (VBD 0) (S (NP (DT 0))))) |ET|
+1 |BT| (VP (PP (NP (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (PRP$ 0) (NN 0))))))) (PP (IN 0))) |ET|
+1 |BT| (S (S (NP (PRP 0)) (VP (VBD 0))) (: 0) (S (NP (NP (DT 0))))) |ET|
+1 |BT| (VP (PP (NP (NNS 0))) (PP (TO 0) (NP (JJ 0)))) |ET|
+-1 |BT| (VP (NP (NP (NN 0)) (PP (IN 0) (NP (NNS 0)))) (PP (IN 0) (NP (NP (JJ 0) (NNS 0)) (PP (IN 0))))) |ET|
+-1 |BT| (VP (VP (S (VP (PP (NP (NP (NNS 0)) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NNS 0)))))))))) (CC 0)) |ET|
+-1 |BT| (VP (VBP 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NN 0))))) |ET|
+1 |BT| (S (NP (NP (NN 0)) (PP (IN 0) (NP (NNS 0)))) (VP (VBD 0) (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0))))) |ET|
+-1 |BT| (VP (PP (IN 0) (NP (JJ 0) (NN 0))) (PP (TO 0) (NP (NP (DT 0) (NN 0))))) |ET|
+-1 |BT| (S (NP (NNS 0)) (VP (VBZ 0) (ADJP (ADJP (JJR 0)) (PP (IN 0))))) |ET|
+-1 |BT| (NP (PP (PP (NP (NP (PRP 0)) (PP (IN 0) (NP (NN 0)))))) ('' 0)) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (ADJP (JJ 0) (PP (IN 0) (NP (NP (DT 0) (NN 0)) (SBAR (S (NP (PRP 0))))))) |ET|
+1 |BT| (PP (IN 0) (S (VP (VBG 0) (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))))) |ET|
+1 |BT| (S (, 0) (NP (NP (NNS 0)) (CC 0) (NP (NP (JJ 0))))) |ET|
+-1 |BT| (S (S (VP (VBD 0))) (: 0) (S (S (NP (DT 0) (NNS 0)) (VP (VBP 0))))) |ET|
+1 |BT| (VP (NP (SBAR (S (VP (VBP 0) (PP (IN 0) (NP (DT 0) (NN 0))))))) (SBAR (IN 0))) |ET|
+1 |BT| (PRN (CC 0) (PP (ADVP (RB 0)) (IN 0) (NP (DT 0)))) |ET|
+1 |BT| (VP (NP (PP (NP (PP (NP (NN 0)))))) (SBAR (IN 0) (S (NP (NN 0))))) |ET|
+1 |BT| (NP (PP (NP (PP (NP (PP (NP (PP (NP (NP (NN 0)) (PP (IN 0) (NP (NN 0))))))))))) (S (VP (TO 0) (VP (VB 0))))) |ET|
+1 |BT| (PP (IN 0) (NP (PRP$ 0) (NX (NX (NX (NN 0) (JJ 0) (- 0)) (ADJP (JJ 0))) (- 0) (NX (JJ 0))))) |ET|
+-1 |BT| (NP (NP (PRP$ 0) (NN 0)) (CC 0) (NP (NP (DT 0) (NN 0)))) |ET|
+-1 |BT| (NP (NP (NN 0)) (PP (VBG 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (POS 0))))))) |ET|
+1 |BT| (S (S (NP (, 0)) (VP (VBD 0))) (: 0) (S (NP (PRP 0)))) |ET|
+1 |BT| (S (NP (PP (NP (PP (NP (PP (NP (PP (NP (PP (NP (NN 0) (NNS 0)))))))))))) (VP (VBD 0) (SBAR (IN 0) (S (NP (NP (NP (NN 0)))))))) |ET|
+-1 |BT| (S (S (S (VP (PP (NP (NP (PP (PP (NP (NP (JJ 0) (NN 0) (NN 0) (NN 0)))))))))) (VP (VBD 0))) (: 0) (S (NP (NP (DT 0) (NN 0))))) |ET|
+1 |BT| (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (NN 0)) (`` 0) (NP (NN 0) (NNS 0))))) |ET|
+1 |BT| (VP (NP (DT 0) (JJ 0) (NN 0)) (SBAR (IN 0))) |ET|
+-1 |BT| (S (S (VP (NP (PP (NP (PP (NP (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (NNS 0)))))))))))) (. 0)) |ET|
+-1 |BT| (S (NP (NNS 0)) (VP (VBD 0) (NP (NNS 0)) (S (VP (TO 0))))) |ET|
+-1 |BT| (VP (NP (DT 0) (NNS 0)) (S (VP (TO 0) (VP (VB 0) (ADVP (RB 0)) (PP (TO 0) (NP (NN 0))))))) |ET|
+-1 |BT| (NP (NP (NNS 0)) (SBAR (WHNP (WDT 0)) (S (NP (NP (NN 0) (NNS 0)) (PP (IN 0) (NP (DT 0) (NN 0))))))) |ET|
+-1 |BT| (S (PP (IN 0) (NP (NP (DT 0) (NN 0)) (PP (IN 0) (NP (DT 0) (NNS 0))))) (NP (EX 0)) (VP (VBP 0))) |ET|
+-1 |BT| (VP (PP (NP (PP (NP (NN 0))))) (SBAR (WHADVP (WRB 0)) (S (NP (DT 0) (NN 0)) (VP (VBD 0))))) |ET|
+1 |BT| (SBAR (IN 0) (S (VP (VBG 0) (PP (TO 0) (NP (NP (DT 0) (JJ 0))))))) |ET|
+1 |BT| (NP (NP (DT 0) (JJ 0) (NN 0)) (PP (IN 0) (NP (NP (NN 0) (NN 0)) (PP (IN 0) (NP (DT 0)))))) |ET|
+1 |BT| (S (S (NP (NP (NN 0))) (VP (MD 0) (VP (VB 0) (ADJP (JJ 0))))) (CC 0) (S (NP (DT 0)))) |ET|

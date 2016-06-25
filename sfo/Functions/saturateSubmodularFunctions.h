@@ -1,0 +1,109 @@
+/*
+ *	Saturate a monotone submodular functions h(X) = min(f(X),k), for a submodular functions f, and value k.
+	Melodi Lab, University of Washington, Seattle
+ *
+ */
+
+class saturateSubmodularFunctions: public submodularFunctions{
+	protected:
+	submodularFunctions* f;
+	double k;
+	double preCompute; // preCompute f(X), for a given set X.
+	public:
+	// Functions
+	saturateSubmodularFunctions(submodularFunctions* f, double k);
+	double eval(const unordered_set<int>& sset);
+	double evalFast(const unordered_set<int>& sset, bool safe);
+	double evalGainsadd(const unordered_set<int>& sset, int item);
+	double evalGainsremove(const unordered_set<int>& sset, int item);
+	double evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe);
+	double evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe);
+	void updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe);
+	void setpreCompute(const unordered_set<int>& sset); 
+	void clearpreCompute();
+	double currentCoverage() { return 0.0;}
+	void initializeFinalSet() {}
+};
+
+saturateSubmodularFunctions::saturateSubmodularFunctions(submodularFunctions* f, double k): submodularFunctions(f->getGroundSet()), f(f), k(k) {preCompute = 0;}
+
+double saturateSubmodularFunctions::eval(const unordered_set<int>& sset){
+	double fval = f->eval(sset);
+	if (fval < k)
+		return fval;
+	else
+		return k;
+}
+
+double saturateSubmodularFunctions::evalFast(const unordered_set<int>& sset, bool safe = 0){
+	if (preCompute < k)
+		return preCompute;
+	else
+		return k;
+}
+
+double saturateSubmodularFunctions::evalGainsadd(const unordered_set<int>& sset, int item){
+	double fval = f->eval(sset);
+	double fgains = f->evalGainsadd(sset, item);
+	if (fval > k)
+		return 0;
+	else if (fval + fgains > k)
+		return k - fval;
+	else
+		return fgains;
+}
+
+double saturateSubmodularFunctions::evalGainsremove(const unordered_set<int>& sset, int item){
+	double fval = f->eval(sset);
+	double fgains = f->evalGainsremove(sset, item);
+	if (fval - fgains > k)
+		return 0;
+	else if (fval > k)
+		return k - fval + fgains;
+	else
+		return fgains;
+}
+
+double saturateSubmodularFunctions::evalGainsaddFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	double fval = preCompute;
+	double fgains = f->evalGainsaddFast(sset, item, safe);
+	if (fval > k)
+		return 0;
+	else if (fval + fgains > k)
+		return k - fval;
+	else
+		return fgains;
+}
+
+double saturateSubmodularFunctions::evalGainsremoveFast(const unordered_set<int>& sset, int item, bool safe = 0){
+	double fval = f->eval(sset);
+	double fgains = f->evalGainsremoveFast(sset, item, safe);
+	if (fval - fgains > k)
+		return 0;
+	else if (fval > k)
+		return k - fval + fgains;
+	else
+		return fgains;
+}
+
+void saturateSubmodularFunctions::updateStatisticsAdd(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsAdd(sset, item, safe);
+	preCompute = f->evalFast(sset, safe);
+}
+
+void saturateSubmodularFunctions::updateStatisticsRemove(const unordered_set<int>& sset, int item, bool safe = 0){
+	f->updateStatisticsRemove(sset, item, safe);
+	preCompute = f->evalFast(sset, safe);
+}
+
+void saturateSubmodularFunctions::clearpreCompute(){
+	f->clearpreCompute();
+	preCompute = 0;
+}
+
+void saturateSubmodularFunctions::setpreCompute(const unordered_set<int>& sset){
+	f->setpreCompute(sset);
+	preCompute = f->evalFast(sset, 0);
+}
+
